@@ -1,6 +1,6 @@
 #ifndef ROCKET_H
 #define ROCKET_H
-<<<<<<< HEAD
+
 #include<cmath>
 #include<iostream>
 using namespace std ;
@@ -11,32 +11,23 @@ T radio_vector(T antheta,T V)
     return cos(antheta)*V;
 }
 
-template<class T>
-class Rocket
-{
-public:
-    Rocket();
-    float Posicion();
-    float Aceleracion();
-    float Velocidad();
-private:
-    float g;
-    float masacarga;
-    float densidadaire;
-    float latitud;
-    float longitud;
-    float Areatotal;
-=======
 template <typename T>
 class Rocket
 {
 public:
     Rocket():masa(0),altura(0){}
     Rocket(T &m,T &a):masa(m),altura(a){}
+    T Posicion();
+    T Aceleracion();
+    T Velocidad();
 private:
     T masa;
     T altura;
->>>>>>> origin/master
+    T masacarga;
+    T densidadaire;
+    T latitud;
+    T longitud;
+    T Areatotal;
 };
 template<class T>
 float aceleracion()
