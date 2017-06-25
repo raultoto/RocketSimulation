@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp \
     rocket.cpp \
     earth.cpp \
-    vector.cpp
+    vector.cpp \
+    environment.cpp
 
 HEADERS  += \
     rocket.h \
     earth.h \
-    vector.h
+    vector.h \
+    environment.h
 
 FORMS    += mainwindow.ui
