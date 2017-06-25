@@ -10,11 +10,24 @@ class Environment
 public:
     Environment();
     Environment(T &,T&, T&);
-
+    T get_Cl();
+    T get_Cd();
 private:
     T airDensity;// densidad del aire
     T latitude; // la latidus
     T lenght; // longitud ;
 };
+
+template<typename T>
+T Environment<T>::get_Cl()
+{
+    return this->Cl;
+}
+
+template<typename T>
+T Environment<T>:: get_Cd()
+{
+    return this->Cd;
+}
 
 #endif // ENVIRONMENT_H
