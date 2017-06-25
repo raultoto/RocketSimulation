@@ -1,13 +1,13 @@
 #include "rocket.h"
 template<typename T>
 Rocket<T>::Rocket()
-    :masa(0),altura(0)
+    :dough(0),height(0)
 {
 
 }
 template <typename T>
 Rocket<T>::Rocket(T &m, T &a)
-    :masa(m),altura(a)
+    :dough(m),height(a)
 {
 
 }

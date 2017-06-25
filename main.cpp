@@ -5,7 +5,8 @@
 #include "earth.cpp"
 
 using namespace std;
-int main(int argc, char *argv[])
+int main()
 {
-
+    cout<<"test";
+return 0;
 }

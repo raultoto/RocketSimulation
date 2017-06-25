@@ -10,6 +10,9 @@ class Environment
 public:
     Environment();
     Environment(T &,T&, T&);
+    T getAirDensity();
+    T getLatitude();
+    T getLenght();
 
 private:
     T airDensity;// densidad del aire
