@@ -6,9 +6,16 @@ class Earth
 {
 public:
     Earth();
+    T getGravity();
+    T getRadio();
+    T getMasa();
+    T getHeight();
+
 private:
-    float gravity;
+    T gravity;
     T radio;
+    T masa ;
+    T height ;
 };
 
 #endif // EARTH_H

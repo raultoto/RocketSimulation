@@ -6,6 +6,7 @@ Rocket<T>::Rocket()
 
 }
 template <typename T>
+
 Rocket<T>::Rocket(T &m, T &a,T &diameter1,T &areatobera1,T & tip_length1)
     :dough(m),height(a),area_nozzle(areatobera1),diameter(diameter1),tip_length(tip_length1)
 {
