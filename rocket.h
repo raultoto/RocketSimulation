@@ -1,5 +1,6 @@
 #ifndef ROCKET_H
 #define ROCKET_H
+<<<<<<< HEAD
 #include<cmath>
 #include<iostream>
 using namespace std ;
@@ -25,6 +26,17 @@ private:
     float latitud;
     float longitud;
     float Areatotal;
+=======
+template <typename T>
+class Rocket
+{
+public:
+    Rocket():masa(0),altura(0){}
+    Rocket(T &m,T &a):masa(m),altura(a){}
+private:
+    T masa;
+    T altura;
+>>>>>>> origin/master
 };
 template<class T>
 float aceleracion()
