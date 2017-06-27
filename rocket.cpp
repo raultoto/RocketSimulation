@@ -5,6 +5,7 @@ Rocket<T>::Rocket()
 {
 
 }
+
 template <typename T>
 
 Rocket<T>::Rocket(T &m, T &a,T &diameter1,T &areatobera1,T & tip_length1)
@@ -23,17 +24,21 @@ Rocket<T>::Rocket(T &m, T &a,T &diameter1,T &areatobera1,T & tip_length1)
         Cd=cf+cb;
 }
 
+template<class T>
+T Rocket<T> :: lift()
+{
+    return 1/2*fuerza.airDensity*pow(v,2)*A*Cd;
+}
+template<class T>
+T Rocket<T>::gravity()
+{
+    return (G*dough*gravitacional.masa)/pow(radio_vector,2);
+}
 
 template<class T>
 T Rocket<T>::drag()
 {
     return 1/2*fuerza.airDensity*pow(v,2)*A*Cd;
-}
-
-template<class T>
-T Rocket<T>::lift()
-{
-
 }
 
 template<class T>

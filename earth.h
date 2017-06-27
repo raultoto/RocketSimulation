@@ -14,7 +14,7 @@ public:
 private:
     T gravity;
     T radio;
-    T masa ;
+    T masa = 5972*pow(10,24);//masa en kilogramos
     T height ;
 };
 

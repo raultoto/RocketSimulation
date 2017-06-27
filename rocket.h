@@ -7,6 +7,8 @@
 #include"earth.h"
 
 #define PI 3.1416
+#define G 6.67*pow(10,-11)
+
 #define vson 343
 //velocidad del sonido a 343 m/s
 
@@ -34,6 +36,7 @@ public:
     Rocket(T &,T &,T &,T &,T&);
     T drag();//arrastre
     T lift();//sustentacion
+    T gravity();
     T position();
     T velocity();
     T acceleration();
@@ -45,6 +48,7 @@ public:
     T getarea_nozzle();
 private:
     Environment<T> fuerza;
+    Earth<T> gravitacional ;
     T dough;
     T height;
     T doughcarga;
@@ -57,6 +61,8 @@ private:
     T q;
     T Cl;//coeficiente de sustentacion
     T Cd;//coeficientes de resitencia
+    T radio_vector;// distancia entre la tierra y el cohete
+
 };
 
 
