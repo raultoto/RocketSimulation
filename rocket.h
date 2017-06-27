@@ -3,8 +3,8 @@
 
 #include<cmath>
 #include<iostream>
-#include"environment.h"
-#include"earth.h"
+#include "environment.h"
+#include "earth.h"
 
 #define PI 3.1416
 #define G 6.67*pow(10,-11)
@@ -13,6 +13,7 @@
 //velocidad del sonido a 343 m/s
 
 using namespace std;
+
 template<class T>
 T radio_vector(T antheta,T V)
 {
@@ -47,7 +48,11 @@ public:
     T getareaall();
     T getarea_nozzle();
 private:
-    Environment<T> fuerza;
+    //parametros enfrente de la plaza de armas de arequipa
+    //la primer parametro es la densidad de arequipa
+    //Environment<T> fuerza ;
+    Environment<float> num;
+    Environment<T> fuerza ;
     Earth<T> gravitacional ;
     T dough;
     T height;

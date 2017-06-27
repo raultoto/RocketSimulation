@@ -1,9 +1,14 @@
 #include "earth.h"
 template<typename T>
 Earth<T>::Earth()
-    :gravity(9.8)
 {
 
+}
+
+template<typename T>
+T Earth<T> :: getdGravitybyheight(T heightb,T altitude)
+{
+    return gravity*pow(r_mediotierra/(r_mediotierra+altitude),2);
 }
 
 template<typename T>
