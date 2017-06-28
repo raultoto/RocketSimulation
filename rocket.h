@@ -4,7 +4,7 @@
 
 #include <QObject>
 #include <QGraphicsPixmapItem>
-
+#include <QGraphicsScene>
 
 
 #include<cmath>
@@ -54,6 +54,7 @@ public:
     T getheight();
     T getareaall();
     T getarea_nozzle();
+    void move();
 private:
     //parametros enfrente de la plaza de armas de arequipa
     //la primer parametro es la densidad de arequipa

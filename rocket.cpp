@@ -65,4 +65,14 @@ T Rocket<T>:: getarea_nozzle()
 {
     return this->area_nozzle;
 }
+template<typename T>
+void Rocket<T>::move()
+{
+    setPos(x()+5,y());
+    if(pos().x()>3600)
+    {
+        scene()->removeItem(this);
+        delete this;
+    }
+}
 

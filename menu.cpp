@@ -20,7 +20,7 @@ Menu::Menu(QWidget *parent)
     text->setDefaultTextColor(Qt::blue);
     earth = new Earth<int>();
     scene->addItem(earth);
-
+    int i=0;
     scene->addItem(text);
     rocket = new Rocket<int>();
     scene->addItem(rocket);
