@@ -2,7 +2,7 @@
 #define ENVIRONMENT_H
 //clase ambiente en la que estara el cohete aqui las presion del aire , viento etc
 #include "earth.h"
-#define e 2.718281
+
 
 #include<cmath>
 template <typename T> class Rocket;
@@ -40,6 +40,7 @@ private:
     T t;
     T R = 286.9;//constante de gases ideales
     T r=1.4;//relacion de calores especificos debido proceso isoentropico
+    double e=2.718281;
 };
 
 

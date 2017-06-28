@@ -47,11 +47,12 @@ public:
     T getheight();
     T getareaall();
     T getarea_nozzle();
+    T push();//empuje
 private:
     //parametros enfrente de la plaza de armas de arequipa
     //la primer parametro es la densidad de arequipa
     //Environment<T> fuerza ;
-    Environment<T> fuerza ;// en vez de fuerza atmosfera
+    Environment<T> ambiente ;// en vez de fuerza atmosfera
     Earth<T> gravitacional ;
     T dough;
     T height;
@@ -66,7 +67,9 @@ private:
     T Cl;//coeficiente de sustentacion
     T Cd;//coeficientes de resitencia
     T radio_vector;// distancia entre la tierra y el cohete
-
+    T pressuergases;
+    T velocityout;
+    double anguloataque;
 };
 
 
