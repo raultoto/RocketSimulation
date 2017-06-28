@@ -16,12 +16,14 @@ SOURCES += main.cpp \
     rocket.cpp \
     earth.cpp \
     vector.cpp \
-    environment.cpp
+    environment.cpp \
+    menu.cpp
 
 HEADERS  += \
     rocket.h \
     earth.h \
     vector.h \
-    environment.h
+    environment.h \
+    menu.h
 
 FORMS    += mainwindow.ui

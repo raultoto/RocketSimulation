@@ -1,8 +1,8 @@
 #ifndef EARTH_H
 #define EARTH_H
-
+#include <istream>
 #include<cmath>
-
+using namespace std;
 template<typename T>
 class Earth
 {

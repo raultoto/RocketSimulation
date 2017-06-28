@@ -10,7 +10,6 @@ vector<T>::vector(T xx,T yy,T zz)
 template <typename T>
 
 vector<T> suma(vector<T> vector1, vector<T> vector2)
-
 {
 
     vector<T> vector3;
@@ -20,8 +19,6 @@ vector<T> suma(vector<T> vector1, vector<T> vector2)
     return vector3;
 
 }
-
-
 template <typename T>
 T vector<T>::getX()
 {
