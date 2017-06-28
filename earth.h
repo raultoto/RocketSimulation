@@ -1,11 +1,16 @@
 #ifndef EARTH_H
 #define EARTH_H
-#include <istream>
+//qt includes
+#include <QObject>
+#include <QGraphicsPixmapItem>
+//----
+#include <iostream>
 #include<cmath>
 using namespace std;
 template<typename T>
-class Earth
+class Earth:public QObject,public QGraphicsPixmapItem
 {
+    //Q_OBJECT
 public:
     Earth();
     T getdGravitybyheight(T heightb,T altitude);

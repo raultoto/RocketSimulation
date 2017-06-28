@@ -27,3 +27,6 @@ HEADERS  += \
     menu.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    res.qrc

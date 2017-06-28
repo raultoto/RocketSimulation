@@ -4,20 +4,28 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <QImage>
+#include "rocket.cpp"
+#include "environment.cpp"
+#include "earth.cpp"
+//#include "vector.cpp"
 using namespace std;
 Menu::Menu(QWidget *parent)
 {
     //create a menu
     scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,800,600);//make the scene
+    scene->setSceneRect(0,0,3600,1800);//make the scene
     setScene(scene);
     text = new QGraphicsTextItem();
     text->setPlainText(QString("Hello World"));
     text->setDefaultTextColor(Qt::blue);
-    scene->addItem(text);
+    earth = new Earth<int>();
+    scene->addItem(earth);
 
-    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setFixedSize(800,600);
+    scene->addItem(text);
+    rocket = new Rocket<int>();
+    scene->addItem(rocket);
+    //setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setFixedSize(1000,700);
 
 }

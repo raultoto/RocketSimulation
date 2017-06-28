@@ -5,6 +5,7 @@
 #include "vector.h"
 #include "rocket.h"
 #include "environment.h"
+//#include "rocket.cpp"
 //qt includes
 #include <QApplication>
 #include <QGraphicsScene>
@@ -18,6 +19,8 @@ public:
 
     QGraphicsScene *scene;//create a new scene
     QGraphicsTextItem *text;
+    Rocket<int> *rocket;
+    Earth<int> *earth;
 };
 
 #endif // MENU_H

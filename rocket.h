@@ -1,5 +1,11 @@
 #ifndef ROCKET_H
 #define ROCKET_H
+//qt includes
+
+#include <QObject>
+#include <QGraphicsPixmapItem>
+
+
 
 #include<cmath>
 #include<iostream>
@@ -30,8 +36,9 @@ bool mach(T v)
 }
 
 template <typename T>
-class Rocket
+class Rocket:public QGraphicsPixmapItem,public QObject
 {
+    //Q_OBJECT
 public:
     Rocket();
     Rocket(T &,T &,T &,T &,T&);
