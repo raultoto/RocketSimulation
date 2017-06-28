@@ -15,8 +15,9 @@ class Menu:public QGraphicsView
     Q_OBJECT
 public:
     Menu(QWidget *parent=0);
-    QGraphicsScene *scene;//create a new scene
 
+    QGraphicsScene *scene;//create a new scene
+    QGraphicsTextItem *text;
 };
 
 #endif // MENU_H
