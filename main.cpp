@@ -1,30 +1,22 @@
-//native includes
-#include <QApplication>
-
-//------------------------
 #include <iostream>
-//.h incldes
 #include "rocket.h"
 #include "earth.h"
-#include "environment.h"
-#include "vector.h"
-#include "menu.h"
-//.cpp  includes
 #include "rocket.cpp"
 #include "earth.cpp"
+#include "environment.h"
 #include "environment.cpp"
-//#include "vector.cpp"
 using namespace std;
-Menu *menu;
-int main(int argc, char *argv[])
+int main()
 {
-    QApplication a(argc,argv);
-    menu=new Menu();
-    menu->show();
-    //menu->displayMainMenu();
-    //cout<<"Todo se puede de veras";
-    //cout << "jajaja pero no un dia antes de la presentacion" << endl;
-    //cout<<"test";
-    return a.exec();
+
+cout<<"Todo se puede de veras";
+Environment<double> ambiente(2000,123,13,2335);
+cout<<"la densidad es "<<ambiente.getdensitybyLm();
+cout<<"La presion es "<<ambiente.getpresionbyLm();
+//Earth<int> numero(2335);
+//los dos ultimos son la temperatura de aqui
+// el utlimo es la altiud de arequipa
+    cout<<"test";
+return 0;
 
 }

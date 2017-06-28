@@ -3,8 +3,7 @@ template<typename T>
 Rocket<T>::Rocket()
     :dough(0),height(0)
 {
-    setPixmap(QPixmap(":/images/rocket4.png"));
-    setPos(1000,1000);
+
 }
 
 template <typename T>
@@ -64,15 +63,5 @@ template<class T>
 T Rocket<T>:: getarea_nozzle()
 {
     return this->area_nozzle;
-}
-template<typename T>
-void Rocket<T>::move()
-{
-    setPos(x()+5,y());
-    if(pos().x()>3600)
-    {
-        scene()->removeItem(this);
-        delete this;
-    }
 }
 

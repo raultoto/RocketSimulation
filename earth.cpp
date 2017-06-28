@@ -2,19 +2,25 @@
 template<typename T>
 Earth<T>::Earth()
 {
-    setPixmap(QPixmap(":/images/earth.jpg"));
+
 }
 
 template<typename T>
-T Earth<T> :: getdGravitybyheight(T heightb,T altitude)
+Earth<T>::Earth(T & altitude)
 {
-    return gravity*pow(r_mediotierra/(r_mediotierra+altitude),2);
+getdGravitybyheight(altitude);
+}
+
+template<typename T>
+T Earth<T> :: getdGravitybyheight(T altitude)
+{
+    this->gravitynow=gravityb*pow(r_mediotierra/(r_mediotierra+altitude),2);
 }
 
 template<typename T>
 T Earth<T>::getGravity()
 {
-return gravity;
+return gravitynow;
 }
 
 template<typename T>

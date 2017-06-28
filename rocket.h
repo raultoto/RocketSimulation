@@ -1,11 +1,5 @@
 #ifndef ROCKET_H
 #define ROCKET_H
-//qt includes
-
-#include <QObject>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsScene>
-
 
 #include<cmath>
 #include<iostream>
@@ -36,9 +30,8 @@ bool mach(T v)
 }
 
 template <typename T>
-class Rocket:public QGraphicsPixmapItem,public QObject
+class Rocket
 {
-    //Q_OBJECT
 public:
     Rocket();
     Rocket(T &,T &,T &,T &,T&);
@@ -54,13 +47,11 @@ public:
     T getheight();
     T getareaall();
     T getarea_nozzle();
-    void move();
 private:
     //parametros enfrente de la plaza de armas de arequipa
     //la primer parametro es la densidad de arequipa
     //Environment<T> fuerza ;
-    Environment<float> num;
-    Environment<T> fuerza ;
+    Environment<T> fuerza ;// en vez de fuerza atmosfera
     Earth<T> gravitacional ;
     T dough;
     T height;
