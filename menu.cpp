@@ -10,13 +10,8 @@
 //#include "vector.cpp"
 using namespace std;
 Menu::Menu(QWidget *parent)
-<<<<<<< Updated upstream
-{/*
-    //create a menu
-=======
 {
 
->>>>>>> Stashed changes
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,3600,1800);//make the scene
     setScene(scene);
@@ -32,5 +27,5 @@ Menu::Menu(QWidget *parent)
     //setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1000,700);
-*/
+
 }
