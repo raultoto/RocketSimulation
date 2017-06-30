@@ -83,9 +83,9 @@ public:
         return input;
 
     }
-
-
-
+    void setX(T x);
+    void setY(T y);
+    void setZ(T z);
 private:
     T x,y,z;
     char c=',';

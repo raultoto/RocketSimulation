@@ -29,8 +29,27 @@ T vector<T>::getY()
 {
     return this->y;
 }
+
 template<typename T>
 T vector<T>::getZ()
 {
     return this->z;
 }
+
+
+template <typename T>
+void vector<T>::setX(T x)
+{
+    this->x=x;
+}
+template <typename T>
+void vector<T>::setY(T y)
+{
+    this->y =y;
+}
+template<typename T>
+void vector<T>::setZ(T z)
+{
+    this->z =z;
+}
+

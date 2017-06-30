@@ -5,10 +5,12 @@
 #include<iostream>
 #include "environment.h"
 #include "earth.h"
-
+#include<vector.h>
 #define PI 3.1416
-#define G 6.67*pow(10,-11)
 
+#define G 6.67*pow(10,-11)
+#include <QObject>
+#include <QGraphicsPixmapItem>
 #define vson 343
 //velocidad del sonido a 343 m/s
 
@@ -22,15 +24,15 @@ T radio_vector(T antheta,T V)
 }
 
 template<class T>
-bool mach(T v)
+bool mach(T v,T velocitysoun)
 {
-    if(v/vson>1)
+    if(v/velocitysoun>1)
         return true;
     return false;
 }
 
 template <typename T>
-class Rocket
+class Rocket:public QGraphicsPixmapItem,public QObject
 {
 public:
     Rocket();
@@ -62,14 +64,20 @@ private:
     T diameter;//diametrocohete
     T tip_length ; //longitu de punta=cono(modelismo)
     T A ;//reference_surface
-    T v ;
+    T v=28;
     T q;
     T Cl;//coeficiente de sustentacion
     T Cd;//coeficientes de resitencia
     T radio_vector;// distancia entre la tierra y el cohete
     T pressuergases;
     T velocityout;
+    T velocitysoun;
+    T azimut ;
+    T theta ;
+    T phi ;
+    T lamnda ;
     double anguloataque;
+   // vector<T> velocidadangulo;
 };
 
 

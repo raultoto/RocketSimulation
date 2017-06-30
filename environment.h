@@ -11,7 +11,7 @@ class Environment
 {
    friend class Rocket<T>;//the class rocket is fried->this class
 public:
-    //Environment();
+    Environment();
     Environment(T densidadaireb,T presiobase,T temperatureb1,T altitud);
 
     T getAirDensity();

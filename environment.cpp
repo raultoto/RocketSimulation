@@ -1,10 +1,10 @@
 #include "environment.h"
-/*
+
 template<typename T>
 Environment<T>::Environment()
 {
 
-}*/
+}
 
 template <typename T>
 Environment<T>::Environment(T a,T pressureb1,T temperaturab1,T  hb1)

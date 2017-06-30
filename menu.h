@@ -1,11 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
-//include .h
-#include "earth.h"
-#include "vector.h"
+//include .hude "environment.h"
 #include "rocket.h"
-#include "environment.h"
-//#include "rocket.cpp"
 //qt includes
 #include <QApplication>
 #include <QGraphicsScene>
