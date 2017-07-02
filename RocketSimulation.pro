@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     environment.cpp \
     menu.cpp \
     rocketinterface.cpp \
-    earthinterface.cpp
+    earthinterface.cpp \
+    showdata.cpp
 
 HEADERS  += \
     rocket.h \
@@ -28,7 +29,8 @@ HEADERS  += \
     environment.h \
     menu.h \
     rocketinterface.h \
-    earthinterface.h
+    earthinterface.h \
+    showdata.h
 
 FORMS    += mainwindow.ui
 

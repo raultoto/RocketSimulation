@@ -24,6 +24,11 @@ Menu::Menu(QWidget *parent)
     scene->addItem(text);
     rocketInterface = new RocketInterface;
     scene->addItem(rocketInterface);
+
+    //ADd data
+    showData = new ShowData();
+    scene->addItem(showData);
+    //showData->moveData();
     //setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1000,700);

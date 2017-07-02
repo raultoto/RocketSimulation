@@ -5,6 +5,7 @@
 #include "rocket.h"
 #include "rocketinterface.h"
 #include "earthinterface.h"
+#include "showdata.h"
 //qt includes
 #include <QApplication>
 #include <QGraphicsScene>
@@ -22,6 +23,7 @@ public:
     Earth<int> *earth;//earth object
     RocketInterface *rocketInterface;
     EarthInterface *earthInterface;
+    ShowData *showData;
 };
 
 #endif // MENU_H

@@ -1,10 +1,13 @@
 #include "rocketinterface.h"
+#include "menu.h"
 #include <QGraphicsScene>
 #include <QTimer>
 #include <typeinfo>
+extern Menu *menu;
 RocketInterface::RocketInterface()
 {
     setPixmap(QPixmap(":/images/Picture5.png"));
+
     setPos(1000,1000);
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
@@ -13,4 +16,5 @@ RocketInterface::RocketInterface()
 void RocketInterface::move()
 {
     setPos(x()+5,y());
+    menu->showData->moveData();
 }
