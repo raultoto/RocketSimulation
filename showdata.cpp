@@ -23,6 +23,7 @@ ShowData::ShowData(QGraphicsItem *parent)
 
 void ShowData::moveData()
 {
-    setPos(menu->rocketInterface->x(),menu->rocketInterface->y());
+    setPos(menu->rocketInterface->x(),menu->rocketInterface->y()-50);
     setPlainText(QString("Aceleration"));
+
 }
