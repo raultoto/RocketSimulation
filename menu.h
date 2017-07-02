@@ -1,7 +1,10 @@
 #ifndef MENU_H
 #define MENU_H
+//header files
 //include .hude "environment.h"
 #include "rocket.h"
+#include "rocketinterface.h"
+#include "earthinterface.h"
 //qt includes
 #include <QApplication>
 #include <QGraphicsScene>
@@ -15,8 +18,10 @@ public:
 
     QGraphicsScene *scene;//create a new scene
     QGraphicsTextItem *text;
-    Rocket<int> *rocket;
-    Earth<int> *earth;
+    Rocket<int> *rocket;// rocket object
+    Earth<int> *earth;//earth object
+    RocketInterface *rocketInterface;
+    EarthInterface *earthInterface;
 };
 
 #endif // MENU_H

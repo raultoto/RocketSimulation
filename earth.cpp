@@ -2,13 +2,13 @@
 template<typename T>
 Earth<T>::Earth()
 {
-setPixmap(QPixmap(":/images/earth.jpg"));
+    //setPixmap(QPixmap(":/images/earth.jpg"));
 }
 
 template<typename T>
 Earth<T>::Earth(T & altitude)
 {
-getdGravitybyheight(altitude);
+    getdGravitybyheight(altitude);
 }
 
 template<typename T>

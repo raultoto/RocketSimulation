@@ -18,12 +18,12 @@ Menu::Menu(QWidget *parent)
     text = new QGraphicsTextItem();
     text->setPlainText(QString("Hello World"));
     text->setDefaultTextColor(Qt::blue);
-    earth = new Earth<int>;
-    scene->addItem(earth);
+    earthInterface = new EarthInterface();
+    scene->addItem(earthInterface);
 
     scene->addItem(text);
-    rocket = new Rocket<int>;
-    scene->addItem(rocket);
+    rocketInterface = new RocketInterface;
+    scene->addItem(rocketInterface);
     //setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1000,700);
