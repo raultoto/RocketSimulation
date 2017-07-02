@@ -3,10 +3,7 @@
 template<typename T>
 Rocket<T>::Rocket()
 {
-    dough=0;
-    height=0;
-    setPixmap(QPixmap(":/images/rocket4.png"));
-    setPos(100,0);
+
 }
 
 template <typename T>

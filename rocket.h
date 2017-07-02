@@ -1,17 +1,22 @@
 #ifndef ROCKET_H
 #define ROCKET_H
+//headers
+#include "environment.h"
+#include "earth.h"
+
 
 #include<cmath>
 #include<iostream>
-#include "environment.h"
-#include "earth.h"
 #include<vector.h>
-#define PI 3.1416
 
-#define G 6.67*pow(10,-11)
+//qt includes
 #include <QObject>
 #include <QGraphicsPixmapItem>
+//defines
 #define vson 343
+#define G 6.67*pow(10,-11)
+#define PI 3.1416
+
 //velocidad del sonido a 343 m/s
 
 using namespace std;
@@ -32,7 +37,7 @@ bool mach(T v,T velocitysoun)
 }
 
 template <typename T>
-class Rocket:public QGraphicsPixmapItem,public QObject
+class Rocket
 {
 public:
     Rocket();

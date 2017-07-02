@@ -1,13 +1,14 @@
 #ifndef EARTH_H
 #define EARTH_H
 #include <istream>
-#include<cmath>
+#include <cmath>
+//qt includes
 #include <QObject>
- #include <QGraphicsPixmapItem>
+#include <QGraphicsPixmapItem>
 template <typename T> class Environment;
 
 template<typename T>
-class Earth : public QObject,public QGraphicsPixmapItem
+class Earth
 {
 public:
     friend class Environment<T>;
