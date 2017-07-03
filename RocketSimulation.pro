@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     menu.cpp \
     rocketinterface.cpp \
     earthinterface.cpp \
-    showdata.cpp
+    showdata.cpp \
+    rockettrajectory.cpp
 
 HEADERS  += \
     rocket.h \
@@ -30,7 +31,8 @@ HEADERS  += \
     menu.h \
     rocketinterface.h \
     earthinterface.h \
-    showdata.h
+    showdata.h \
+    rockettrajectory.h
 
 FORMS    += mainwindow.ui
 

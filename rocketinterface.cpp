@@ -1,5 +1,6 @@
 #include "rocketinterface.h"
 #include "menu.h"
+#include "rockettrajectory.h"
 #include <QGraphicsScene>
 #include <QTimer>
 #include <typeinfo>
@@ -15,7 +16,8 @@ RocketInterface::RocketInterface()
 }
 void RocketInterface::move()
 {
+    RocketTrajectory *rocketTrayectory = new RocketTrajectory();
+    scene()->addItem(rocketTrayectory);
     setPos(x()+5,y());
     menu->showData->moveData();
-
 }

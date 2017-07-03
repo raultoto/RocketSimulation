@@ -29,8 +29,8 @@ Menu::Menu(QWidget *parent)
     showData = new ShowData();
     scene->addItem(showData);
     //showData->moveData();
-    //setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1000,700);
 
 }

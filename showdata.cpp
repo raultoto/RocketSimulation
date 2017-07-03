@@ -10,7 +10,6 @@ ShowData::ShowData(QGraphicsItem *parent)
 {
 
     setPlainText(QString("Velocity"));
-    setPlainText(QString("Aceleration"));
     setDefaultTextColor(Qt::green);
     setFont(QFont("times",20));
     setPos(x()+5,1000);
