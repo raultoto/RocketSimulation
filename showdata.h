@@ -7,7 +7,11 @@ class ShowData:public QGraphicsTextItem
 {
 public:
     ShowData(QGraphicsItem *parent=0);
-    void moveData();
+    void moveVelocity();
+    void moveAceleration();
+    void movePresion();
+    void moveCoordinates();
+
 };
 
 #endif // SHOWDATA_H

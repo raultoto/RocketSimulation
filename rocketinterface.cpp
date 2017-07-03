@@ -16,5 +16,9 @@ RocketInterface::RocketInterface()
 void RocketInterface::move()
 {
     setPos(x()+5,y());
-    menu->showData->moveData();
+    menu->showData->moveAceleration();
+    menu->showData->moveVelocity();
+    menu->showData->movePresion();
+    menu->showData->moveCoordinates();
+
 }
