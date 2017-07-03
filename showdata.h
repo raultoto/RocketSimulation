@@ -11,6 +11,7 @@ public:
     void moveAceleration();
     void movePresion();
     void moveCoordinates();
+    void moveData();
 
 };
 

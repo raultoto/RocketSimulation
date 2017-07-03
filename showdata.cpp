@@ -11,7 +11,7 @@ ShowData::ShowData(QGraphicsItem *parent)
 
     setPlainText(QString("Velocity"));
     setPlainText(QString("Aceleration"));
-    setDefaultTextColor(Qt::red);
+    setDefaultTextColor(Qt::green);
     setFont(QFont("times",20));
     setPos(x()+5,1000);
     //setPos(menu->rocketInterface->x(),menu->rocketInterface->y());
@@ -45,7 +45,14 @@ void ShowData::movePresion()
 void ShowData::moveCoordinates()
 {
     setPos(menu->rocketInterface->x(),menu->rocketInterface->y()-110);
-    setPlainText(QString("(x")+QString(",y)"));
+    setPlainText(QString("(x\n")+QString(",y)"));
+
+}
+
+void ShowData::moveData()
+{
+    setPos(menu->rocketInterface->x(),menu->rocketInterface->y()-200);
+    setPlainText(QString("Presion:\n")+QString("Velocity:\n")+QString("Aceleration:\n")+QString("(")+QString::number(menu->rocketInterface->x())+QString(",")+QString::number(menu->rocketInterface->y())+QString(")"));
 
 }
 
