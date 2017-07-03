@@ -21,7 +21,9 @@ SOURCES += main.cpp \
     rocketinterface.cpp \
     earthinterface.cpp \
     showdata.cpp \
-    rockettrajectory.cpp
+    rockettrajectory.cpp \
+    background.cpp \
+    button.cpp
 
 HEADERS  += \
     rocket.h \
@@ -32,7 +34,9 @@ HEADERS  += \
     rocketinterface.h \
     earthinterface.h \
     showdata.h \
-    rockettrajectory.h
+    rockettrajectory.h \
+    background.h \
+    button.h
 
 FORMS    += mainwindow.ui
 

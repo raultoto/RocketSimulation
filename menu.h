@@ -6,24 +6,30 @@
 #include "rocketinterface.h"
 #include "earthinterface.h"
 #include "showdata.h"
+#include "background.h"
+#include "button.h"
 //qt includes
-#include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QGraphicsWidget>
 #include <QGraphicsTextItem>
 class Menu:public QGraphicsView
 {
     Q_OBJECT
-public:
+public://menber function
     Menu(QWidget *parent=0);
-
+    void displayMainMenu();
+    void finishSimulation();
+    //create objects
     QGraphicsScene *scene;//create a new scene
-    QGraphicsTextItem *text;
     Rocket<int> *rocket;// rocket object
     Earth<int> *earth;//earth object
     RocketInterface *rocketInterface;
     EarthInterface *earthInterface;
     ShowData *showData;
+    BackGround *backGround;
+public slots:
+    void start();
 };
 
 #endif // MENU_H

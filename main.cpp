@@ -42,9 +42,11 @@ int main(int argc, char *argv[])
     file.close();*/
 
     QApplication a(argc,argv);
-        menu=new Menu();
-        menu->show();
-        cout<<"Todo se puede de veras";
+    menu=new Menu();
+    menu->show();
+    menu->displayMainMenu();
+
+    cout<<"Todo se puede de veras";
 
     double latitud=40.7127837 ,altitud=2335 ,longitud=-74.00594130000002
             ,dlatitud=2,temperatura=20,densidad=123,presion=2000
