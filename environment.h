@@ -23,9 +23,10 @@ public:
     T getpresionbyLm();
     void  getemperature();
     void getspeedsound() ;
+    void setvar(T a,T pressureb1,T temperaturab1,T  hb1);
 private:
     T pressureb ;
-    T airDensity;// densidad del aire
+    T airDensity=1212;// densidad del aire
     T latitudeb; // la latidus = como altitude geometrica
     T lenghtb; // longitud ;
     T altitudeb; //a#include<cmath>ltitud

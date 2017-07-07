@@ -15,7 +15,6 @@ TEMPLATE = app
 SOURCES += main.cpp \
     rocket.cpp \
     earth.cpp \
-    vector.cpp \
     environment.cpp \
     menu.cpp \
     rocketinterface.cpp \
@@ -23,12 +22,12 @@ SOURCES += main.cpp \
     showdata.cpp \
     rockettrajectory.cpp \
     background.cpp \
-    button.cpp
+    button.cpp \
+    vectores.cpp
 
 HEADERS  += \
     rocket.h \
     earth.h \
-    vector.h \
     environment.h \
     menu.h \
     rocketinterface.h \
@@ -36,7 +35,8 @@ HEADERS  += \
     showdata.h \
     rockettrajectory.h \
     background.h \
-    button.h
+    button.h \
+    vectores.h
 
 FORMS    += mainwindow.ui
 

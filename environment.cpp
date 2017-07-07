@@ -12,13 +12,33 @@ Environment<T>::Environment(T a,T pressureb1,T temperaturab1,T  hb1)
 {
     this->h=tierra.r_mediotierra/(tierra.r_mediotierra+altitudenow)*altitudenow;
     this->Lm=Lm_pendiente();
+    this->h=hb;
     getemperature();
     getspeedsound();
+    getdensitybyLm();
 }
+
+
+template<typename T>
+void Environment<T>::setvar(T a,T pressureb1,T temperaturab1,T  hb1)
+{
+    airDensity=a;
+    pressureb=pressureb1;
+    temperatureb=temperaturab1;
+    hb=hb1;
+    this->h=tierra.r_mediotierra/(tierra.r_mediotierra+altitudenow)*altitudenow;
+    this->Lm=Lm_pendiente();
+    this->h=hb;
+    getemperature();
+    getspeedsound();
+    getdensitybyLm();
+}
+
 
 template<typename T>
 void Environment<T>::getspeedsound()
 {
+
      this->speedsound=pow(r*R*temperaturenow,0.5) ;
 }
 

@@ -7,7 +7,7 @@
 #include "rocket.cpp"
 #include "environment.cpp"
 #include "earth.cpp"
-//#include "vector.cpp"
+//#include "vectores.cpp"
 using namespace std;
 Menu::Menu(QWidget *parent)
 {

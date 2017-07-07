@@ -18,6 +18,6 @@ void RocketInterface::move()
 {
     RocketTrajectory *rocketTrayectory = new RocketTrajectory();
     scene()->addItem(rocketTrayectory);
-    setPos(x()+5,y());
+    setPos(x()+5,y()-4);
     menu->showData->moveData();
 }

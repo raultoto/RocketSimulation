@@ -1,39 +1,39 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef VECTORES_H
+#define VECTORES_H
 #include <iostream>
 #include <cmath>
 using namespace std;
 template<typename T>
 
-class vector
+class vectores
 {
 public:
-    vector():x(0),y(0),z(0){}
-    vector(T,T,T);
-    vector suma(vector,vector);
-    vector sum(vector vec1,vector vec2)
+    vectores():x(0),y(0),z(0){}
+    vectores(T,T,T);
+    vectores suma(vectores vector);
+    vectores sum(vectores vec1,vectores vec2)
     {
-        vector tem;
+        vectores<T> tem;
         tem.x=vec1.x+vec2.x;
         tem.y=vec1.y+vec2.y;
         tem.z=vec1.z+vec2.z;
         return tem;
     }
-    vector escalar(T a,vector vec)
+    vectores escalar(T a,vectores vec)
     {
-        vector tem;
+        vectores<T> tem;
         tem.x=a*vec.x;
         tem.y=a*vec.y;
         tem.z=a*vec.z;
+        return tem;
     }
     double size()
-
     {
         return  sqrt(x*x+y*y+z*z);
     }
-    vector unitario(vector vec)
+    vectores unitario(vectores vec)
     {
-        vector tem;
+        vectores tem;
         tem.x=vec.getX()/vec.size();
         tem.y=vec.getY()/vec.size();
         tem.z=vec.getZ()/vec.size();
@@ -43,25 +43,25 @@ public:
     T getX();
     T getY();
     T getZ();
-    vector operator +(vector vec)
+    vectores operator +(vectores vec)
     {
-        vector tem;
+        vectores tem;
         tem.x=x+vec.x;
         tem.y=y+vec.y;
         tem.z=z+vec.z;
         return tem;
     }
-    vector operator -(vector vec)
+    vectores operator -(vectores vec)
     {
-        vector tem;
+        vectores tem;
         tem.x=x-vec.x;
         tem.y=y-vec.y;
         tem.z=z-vec.z;
         return tem;
     }
-    vector operator *(vector vec)
+    vectores operator *(vectores vec)
     {
-        vector tem;
+        vectores tem;
         tem.x=x-vec.x;
         tem.y=y-vec.y;
         tem.z=z-vec.z;
@@ -71,12 +71,12 @@ public:
     }
 
 
-    friend ostream& operator << (ostream& output,vector& pt)
+    friend ostream& operator << (ostream& output,vectores& pt)
     {
         output << "(" << pt.x<< ","<< pt.y << ","<< pt.z<<")" ;
-
     }
-    friend istream& operator >> (istream& input,vector& pt)
+
+    friend istream& operator >> (istream& input,vectores& pt)
     {
         input >> pt.p>> pt.x >> pt.c>> pt.y>>pt.c >> pt.z >>pt.p;
         input.ignore();
@@ -84,12 +84,25 @@ public:
 
     }
     void setX(T x);
-    void setY(T y);
-    void setZ(T z);
+    void setY(T x);
+    void setZ(T x);
+    /*
+    void setX(T x){
+     this->x=x;
+    }
+    void setY(T y){
+        this->y=y;
+    }
+
+    void setZ(T z){
+        this->z=z;
+    }
+*/
+    void producto_vectorial(vectores<T> A,vectores<T> & B);
 private:
     T x,y,z;
     char c=',';
     char p=')';
 };
 
-#endif // VECTOR_H
+#endif // VECTORES_H
