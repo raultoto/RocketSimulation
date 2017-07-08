@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     rockettrajectory.cpp \
     background.cpp \
     button.cpp \
-    vectores.cpp
+    vectores.cpp \
+    movementheight.cpp
 
 HEADERS  += \
     rocket.h \
@@ -36,7 +37,8 @@ HEADERS  += \
     rockettrajectory.h \
     background.h \
     button.h \
-    vectores.h
+    vectores.h \
+    movementheight.h
 
 FORMS    += mainwindow.ui
 
