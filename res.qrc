@@ -1,9 +1,8 @@
 <RCC>
     <qresource prefix="/images">
-        <file>Picture5.png</file>
-        <file>Picture4.png</file>
-        <file>Picture3.png</file>
-        <file>earth.jpg</file>
-        <file>descarga.jpg</file>
+        <file>Images/Picture5.png</file>
+        <file>Images/maxresdefault.jpg</file>
+        <file>Images/earth.jpg</file>
+        <file>Images/descarga.jpg</file>
     </qresource>
 </RCC>

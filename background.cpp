@@ -2,6 +2,6 @@
 #include <QGraphicsScene>
 BackGround::BackGround()
 {
-    setPixmap(QPixmap(":/images/descarga.jpg"));
+    setPixmap(QPixmap(":/images/Images/descarga.jpg"));
     setPos(1300,500);
 }

@@ -7,7 +7,7 @@
 extern Menu *menu;
 RocketInterface::RocketInterface()
 {
-    setPixmap(QPixmap(":/images/Picture5.png"));
+    setPixmap(QPixmap(":/images/Images/Picture5.png"));
 
     setPos(1000,1000);
     QTimer *timer = new QTimer();

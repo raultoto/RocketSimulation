@@ -2,6 +2,6 @@
 #include <QGraphicsScene>
 EarthInterface::EarthInterface()
 {
-    setPixmap(QPixmap(":/images/earth.jpg"));
+    setPixmap(QPixmap(":/images/Images/earth.jpg"));
 
 }
