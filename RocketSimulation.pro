@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     background.cpp \
     button.cpp \
     vectores.cpp \
-    movementheight.cpp
+    movementheight.cpp \
+    graphdata.cpp
 
 HEADERS  += \
     rocket.h \
@@ -38,7 +39,8 @@ HEADERS  += \
     background.h \
     button.h \
     vectores.h \
-    movementheight.h
+    movementheight.h \
+    graphdata.h
 
 FORMS    += mainwindow.ui
 
