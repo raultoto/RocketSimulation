@@ -8,11 +8,12 @@ MovementHeight::MovementHeight()
     //setPixmap(QPixmap(":/images/Images/earth1.jpg"));
     //setPos(1800,0);
     QGraphicsScene * scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,700,800);
+    scene->setSceneRect(0,0,1600,1000);
     QGraphicsView *view = new QGraphicsView(scene);
     view->setBackgroundBrush(QBrush(QImage(":/images/Images/earth1.jpg")));
-
+    view->setFixedSize(350,700);
     view->show();
+
     //view->setPos(1500,500);
 
     //QTimer *timer =  new QTimer();

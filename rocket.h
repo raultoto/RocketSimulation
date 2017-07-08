@@ -52,7 +52,6 @@ public:
     T a;
     T height;
 private:
-
     T latitude;
     T longitude;
     T dt;

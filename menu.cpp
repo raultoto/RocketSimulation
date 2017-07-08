@@ -69,6 +69,9 @@ void Menu::finishSimulation()
 }
 void Menu::start()
 {
+    //setFixedSize(1800,1200);
+
+
     scene->clear();
     //create and add Earth to the scene
     earthInterface = new EarthInterface();

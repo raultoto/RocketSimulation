@@ -25,14 +25,14 @@ public://menber function
     QGraphicsScene *scene;//create a new scene
     Rocket<int> *rocket;// rocket object
     Earth<int> *earth;//earth object
-    RocketInterface *rocketInterface;
-    EarthInterface *earthInterface;
-    ShowData *showData;
-    BackGround *backGround;
-    MovementHeight *move;
-public slots:
-    void start();
-    void callMovementHeight();
+    RocketInterface *rocketInterface;//create a rocketInterface object
+    EarthInterface *earthInterface;//create a earth interface
+    ShowData *showData;//this object show data
+    BackGround *backGround;//backgrud
+    MovementHeight *move; //object for view the height
+public slots://connect slots and signals
+    void start();//signal start
+    void callMovementHeight();//signal callMovementHeight();
     //void callGraphData();
 };
 
