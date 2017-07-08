@@ -2,7 +2,7 @@
 #define MOVEMENTHEIGHT_H
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-#include <rocketinterface.h>
+#include <QObject>
 class MovementHeight:public QObject,public QGraphicsPixmapItem
 {
     Q_OBJECT

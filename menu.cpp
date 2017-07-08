@@ -81,5 +81,8 @@ void Menu::start()
     //create and add ShowData to the scene
     showData = new ShowData();
     scene->addItem(showData);
-
+    //create and movementHeight to the scene
+    move= new MovementHeight();
+    scene->addItem(move);
+    //scene->addItem(move);
 }

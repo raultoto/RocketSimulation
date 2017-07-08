@@ -8,6 +8,7 @@
 #include "showdata.h"
 #include "background.h"
 #include "button.h"
+#include "movementheight.h"
 //qt includes
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -28,6 +29,7 @@ public://menber function
     EarthInterface *earthInterface;
     ShowData *showData;
     BackGround *backGround;
+    MovementHeight *move;
 public slots:
     void start();
 };
