@@ -2,7 +2,9 @@
 #define GRAPHDATA_H
 #include <QObject>
 #include <QGraphicsPixmapItem>
-
+#include <fstream>
+#include <iostream>
+using namespace std;
 class GraphData:public QObject
 {
     Q_OBJECT

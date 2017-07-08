@@ -11,6 +11,9 @@ MovementHeight::MovementHeight()
     scene->setSceneRect(0,0,1600,1000);
     QGraphicsView *view = new QGraphicsView(scene);
     view->setBackgroundBrush(QBrush(QImage(":/images/Images/earth1.jpg")));
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     view->setFixedSize(350,700);
     view->show();
 

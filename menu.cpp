@@ -91,11 +91,15 @@ void Menu::start()
 
     //scene->addItem(move);
     Button* quitButton = new Button(QString("Quit"));
-    int qxPos = this->width()/2 - quitButton->boundingRect().width()/2;
-    int qyPos = 350;
     quitButton->setPos(1725,1100);
     connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
     scene->addItem(quitButton);
+
+
+    Button* graphButtom = new Button(QString("Graph"));
+    graphButtom->setPos(1725,900);
+    connect(graphButtom,SIGNAL(clicked()),this,SLOT(callGraphData()));
+    scene->addItem(graphButtom);
 
 }
 
@@ -103,4 +107,10 @@ void Menu::callMovementHeight()
 {
     move= new MovementHeight();
     scene->addItem(move);
+}
+
+void Menu::callGraphData()
+{
+    graph = new GraphData();
+    //scene->addItem(graph);
 }

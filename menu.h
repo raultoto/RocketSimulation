@@ -9,6 +9,7 @@
 #include "background.h"
 #include "button.h"
 #include "movementheight.h"
+#include "graphdata.h"
 //qt includes
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -30,10 +31,11 @@ public://menber function
     ShowData *showData;//this object show data
     BackGround *backGround;//backgrud
     MovementHeight *move; //object for view the height
+    GraphData *graph;
 public slots://connect slots and signals
     void start();//signal start
     void callMovementHeight();//signal callMovementHeight();
-    //void callGraphData();
+    void callGraphData();
 };
 
 #endif // MENU_H
