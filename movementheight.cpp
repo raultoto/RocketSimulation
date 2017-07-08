@@ -1,4 +1,5 @@
 #include "movementheight.h"
+#include "rocketinterface.h"
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -13,7 +14,9 @@ MovementHeight::MovementHeight()
     view->setBackgroundBrush(QBrush(QImage(":/images/Images/earth1.jpg")));
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
+    RocketInterface *rocket = new RocketInterface();
+    //rocket->setPos(100,900);
+    scene->addItem(rocket);
     view->setFixedSize(350,700);
     view->show();
 
