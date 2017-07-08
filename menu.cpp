@@ -67,7 +67,6 @@ void Menu::finishSimulation()
 {
 
 }
-
 void Menu::start()
 {
     scene->clear();
@@ -82,7 +81,23 @@ void Menu::start()
     showData = new ShowData();
     scene->addItem(showData);
     //create and movementHeight to the scene
+    Button* callHeightButton = new Button(QString("View Height"));
+    callHeightButton->setPos(1725,1000);
+    connect(callHeightButton,SIGNAL(clicked()),this,SLOT(callMovementHeight()));
+    scene->addItem(callHeightButton);
+
+    //scene->addItem(move);
+    Button* quitButton = new Button(QString("Quit"));
+    int qxPos = this->width()/2 - quitButton->boundingRect().width()/2;
+    int qyPos = 350;
+    quitButton->setPos(1725,1100);
+    connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
+    scene->addItem(quitButton);
+
+}
+
+void Menu::callMovementHeight()
+{
     move= new MovementHeight();
     scene->addItem(move);
-    //scene->addItem(move);
 }

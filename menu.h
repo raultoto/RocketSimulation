@@ -32,6 +32,8 @@ public://menber function
     MovementHeight *move;
 public slots:
     void start();
+    void callMovementHeight();
+    //void callGraphData();
 };
 
 #endif // MENU_H

@@ -5,8 +5,10 @@
 #include <QImage>
 MovementHeight::MovementHeight()
 {
+    //setPixmap(QPixmap(":/images/Images/earth1.jpg"));
+    //setPos(1800,0);
     QGraphicsScene * scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,1000,400);
+    scene->setSceneRect(0,0,700,800);
     QGraphicsView *view = new QGraphicsView(scene);
     view->setBackgroundBrush(QBrush(QImage(":/images/Images/earth1.jpg")));
 
