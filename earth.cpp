@@ -5,13 +5,13 @@ Earth<T>::Earth()
 
 }
 
-
-template<typename T>
-Earth<T>::Earth(T & altitude)
+template<class T>
+void Earth<T>::set_var (T & altitude)
 {
-    getdGravitybyheight(altitude);
     this->altitude=altitude;
+    getdGravitybyheight();
 }
+
 /*
  * Esta j2 es para coordenadas esfericas
 d*/
@@ -41,11 +41,7 @@ T Earth<T>::get_radiovector()
     this->radio_vector=r_mediotierra+altitude;
     return radio_vector;
 }
-template<typename T>
-void Earth<T>::set_altitude(T altitude1)
-{
-    this->altitude=altitude1;
-}
+
 /*template<typename T>
 Earth<T>::get_wr(){
     T G=6.67*pow(10,11);//constante de cavendish

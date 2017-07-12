@@ -18,21 +18,24 @@ public:
     T getLatitude();
     T getLenght();
 
+    //T diferencial_altitud();
     T Lm_pendiente();
     T getdensitybyLm();
     T getpresionbyLm();
+    T dif_altitud();
     void  getemperature();
     void getspeedsound() ;
-    void setvar(T a,T pressureb1,T temperaturab1,T  hb1);
+    void setvar(T altitud);
 private:
-    T pressureb ;
+    T pressureb=212;
+    T temperatureb=180;
     T airDensity=1212;// densidad del aire
+    T altitudeb; //a#include<cmath>ltitud
+
     T latitudeb; // la latidus = como altitude geometrica
     T lenghtb; // longitud ;
-    T altitudeb; //a#include<cmath>ltitud
     T altitudenow;//altitud geometrica
     Earth<T>tierra;
-    T temperatureb;
     T temperaturenow;
     T speedsound;
     T h;//la latitud geopontencial

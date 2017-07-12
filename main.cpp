@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
             ,dtemperatura=10,daltitud=4,ddensidad=1,dpresion=2
             ,lenght_tip=150,vb=20;
     string primer_file="HxX.csv";
-    string segundo_file="AxP.csv";
+    string segundo_file="PxD.csv";
     string tercer_file="AxD.csv";
     open(primer_file);
     open(segundo_file);
@@ -68,8 +68,11 @@ Rocket<double> primer_experimento(altitud,vb,latitud,longitud,td);
         temperatura+=dtemperatura;
         presion+=dpresion;
         Guardar(primer_experimento.height,primer_experimento.posicion.getX(),primer_file);
-        primer_experimento.height+=daltitud;//cambiando
+        primer_experimento.height+=primer_experimento.ambiente.dif_altitud();//cambiando
         primer_experimento.update_var();
+        primer_experimento.setlatitud_longitud(latitud,longitud,primer_experimento.height);
+        Guardar(primer_experimento.ambiente.getpresionbyLm(),primer_experimento.ambiente.getdensitybyLm(),"PxD.csv");
+        qDebug()<<primer_experimento.height;
     }
 return a.exec();
 

@@ -22,7 +22,7 @@ public:
     friend class Environment<T>;
     friend class Rocket<T>;
     Earth();
-    Earth(T & altitude);
+    void set_var (T & altitude);
     void set_altitude();
     T getdGravitybyheight();
     T getGravity();
@@ -30,7 +30,7 @@ public:
     T getMasa();
     T getHeight();
     T get_radiovector();
-    void set_altitude(T altitude1);
+   // void set_altitude(T altitude1);
     T get_W(T masa_cohete,T velocidad_ascenso,T phi);//W fuerza de atraccion gravitacional
     //void get_wr();
     //void get_wr();

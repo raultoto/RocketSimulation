@@ -38,7 +38,7 @@ public:
     void velocity();
     void acceleration();
     void update_var();//variables necesarias para el movimiento
-    void setlatitud_longitud(T & latitud ,T & longitud);
+    void setlatitud_longitud(T & latitud ,T & longitud, T & altitud );
     void get_cdycl();
     T get_velocidad_ascenso();
     ///gets
@@ -51,6 +51,7 @@ public:
     vectores<T> posicion;
     T a;
     T height;
+    Environment<T> ambiente ;// en vez de fuerza atmosfera
 private:
     T latitude;
     T longitude;
@@ -64,15 +65,15 @@ private:
     T w=12;//velocidad angular
     T num_push ;
     T latitudeb;
-    Environment<T> ambiente ;// en vez de fuerza atmosfera
+
     Earth<T> mytierra;//T a,T pressureb1,T temperaturab1,T  hb1)
     double dough=121;
 
-    double doughcarga;
-    T areaall;
-    T area_nozzle;//area de la tobera
-    T diameter;//diametrocohete
-    T tip_length ; //longitu de punta=cono(modelismo)
+    double doughcarga=343;
+    T areaall=5454;
+    T area_nozzle=223;//area de la tobera
+    T diameter=1245;//diametrocohete
+    T tip_length=12; //longitu de punta=cono(modelismo)
     T A;//reference_surface
 
     T q;

@@ -44,12 +44,12 @@ Rocket<T>::Rocket(T& altitud,T& vb1, T & latitud,T &longitud,T & dt)
     tip_length=121;
     vb=v;
 
-     mytierra.set_altitude(altitud);
+     mytierra.set_var(altitud);
      velocity();
      theta=-mytierra.gravitynow*cos(theta)/v;
     A=diameter*diameter/4 * PI;
     update_var();
-    ambiente.setvar(12,presionb,temperatureb,height);//T a,T pressureb1,T temperaturab1,T  hb1
+    ambiente.setvar(altitud);//T a,T pressureb1,T temperaturab1,T  hb1
 }
 
 
@@ -69,7 +69,6 @@ void Rocket<T>::acceleration()
     mytierra.get_W(dough,r,phi);
     this->a=num_push*cos(anguloataque)/dough -D/dough-mytierra.Wr*cos(theta)/dough + mytierra.Wphi*sin(theta)*cos(azimut)/dough
     -pow(w,2)*r*cos(phi)*(sin(phi)*sin(theta)*cos(azimut)-cos(phi)*cos(theta));
-
     qDebug()<<a;
 }
 
@@ -110,12 +109,14 @@ T Rocket<T>::get_velocidad_ascenso()
 
 
 template<class T>
-void Rocket<T> :: setlatitud_longitud(T & latitud,T & longitud)
+void Rocket<T> :: setlatitud_longitud(T & latitud,T & longitud,T & altitud)
 {
 this->latitude= latitud;
 this->longitude=longitud;
     velocity();
     //radio_vector=get_radio_vector(theta,v);
+    ambiente.setvar(altitud);
+    mytierra.set_var(altitud);
     update_var();
 }
 
