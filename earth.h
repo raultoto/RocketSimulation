@@ -8,10 +8,14 @@
 template <typename T> class Environment;
 template <typename T> class Rocket;
 
+#include<iostream>
+using namespace std;
 template<typename T>
 T funcion_bessel(T x)
 {
+    cout<<"bessel"<<x;
     T j2= (3/x*x-1)*sin(x)/x - 3*cos(x)/x*x;
+    cout<<"bessel"<<x;
     return j2;
 }
 
@@ -22,7 +26,7 @@ public:
     friend class Environment<T>;
     friend class Rocket<T>;
     Earth();
-    Earth(T & altitude);
+    void set_var (T & altitude);
     void set_altitude();
     T getdGravitybyheight();
     T getGravity();
@@ -30,7 +34,7 @@ public:
     T getMasa();
     T getHeight();
     T get_radiovector();
-    void set_altitude(T altitude1);
+   // void set_altitude(T altitude1);
     T get_W(T masa_cohete,T velocidad_ascenso,T phi);//W fuerza de atraccion gravitacional
     //void get_wr();
     //void get_wr();

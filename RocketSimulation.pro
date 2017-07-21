@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = RocketSimulation
 TEMPLATE = app
 
-
+CONFIG += c++11
 SOURCES += main.cpp \
     rocket.cpp \
     earth.cpp \
@@ -40,7 +40,8 @@ HEADERS  += \
     button.h \
     vectores.h \
     movementheight.h \
-    graphdata.h
+    graphdata.h \
+    datos_iniciales.h
 
 FORMS    += mainwindow.ui
 
