@@ -14,6 +14,23 @@ GraphData::GraphData(QWidget *parent)
     rect1->setRect(400,0,0,800);
     scene1->addItem(rect);
     scene1->addItem(rect1);
+
+    //creacion de cordenadas
+    int cont=0;
+    while(cont<1300)
+    {
+        //vertical
+        RocketTrajectory *trajectory3 = new RocketTrajectory("__");
+        scene1->addItem(trajectory3);
+        trajectory3->setPos(390,1200-cont);
+        //horizontal
+        RocketTrajectory *trajectory = new RocketTrajectory("|");
+        scene1->addItem(trajectory);
+        trajectory->setPos(800-cont,386);
+        cont=cont+5;
+
+
+    }
     QGraphicsView *view = new QGraphicsView(scene1);
     view->setFixedSize(350,700);
 
@@ -52,7 +69,7 @@ void GraphData::graphHeightWithTime()
 {
     int cont=0;
     while (cont<100) {
-        RocketTrajectory *trajectory3 = new RocketTrajectory();
+        RocketTrajectory *trajectory3 = new RocketTrajectory("*");
         scene1->addItem(trajectory3);
         trajectory3->setPos(400+cont,400-cont);
         cont++;
@@ -63,7 +80,7 @@ void GraphData::graphVelocityWithTime()
 {
     int cont=0;
     while (cont<100) {
-        RocketTrajectory *trajectory3 = new RocketTrajectory();
+        RocketTrajectory *trajectory3 = new RocketTrajectory("*");
         scene1->addItem(trajectory3);
         trajectory3->setPos(400+cont,400+cont);
         cont++;
@@ -75,7 +92,7 @@ void GraphData::velocityWithPressure()
 {
     int cont=0;
     while (cont<100) {
-        RocketTrajectory *trajectory3 = new RocketTrajectory();
+        RocketTrajectory *trajectory3 = new RocketTrajectory("*");
         scene1->addItem(trajectory3);
         trajectory3->setPos(400,400-cont);
         cont++;

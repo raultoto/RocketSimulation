@@ -5,7 +5,7 @@
 class RocketTrajectory:public QGraphicsTextItem
 {
 public:
-    RocketTrajectory(QGraphicsItem *parent =0);
+    RocketTrajectory(QString ,QGraphicsItem *parent =0);
 };
 
 #endif // ROCKETTRAJECTORY_H
