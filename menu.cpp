@@ -101,6 +101,7 @@ void Menu::start()
     connect(graphButtom,SIGNAL(clicked()),this,SLOT(callGraphData()));
     scene->addItem(graphButtom);
 
+
 }
 
 void Menu::callMovementHeight()
@@ -112,5 +113,7 @@ void Menu::callMovementHeight()
 void Menu::callGraphData()
 {
     graph = new GraphData();
+    graph->graphHeightWithTime();
     //scene->addItem(graph);
+    //graph->graphHeightWithTime();
 }

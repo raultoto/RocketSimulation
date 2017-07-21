@@ -6,7 +6,7 @@ RocketTrajectory::RocketTrajectory(QGraphicsItem *parent)
     :QGraphicsTextItem(parent)
 {
     setPlainText(QString("*"));
-    setDefaultTextColor(Qt::yellow);
-    setFont(QFont("times",8));
+    setDefaultTextColor(Qt::red);
+    setFont(QFont("times",10));
     setPos(menu->rocketInterface->x()-5,menu->rocketInterface->y()+8);
 }

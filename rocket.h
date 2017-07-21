@@ -3,7 +3,7 @@
 //headers
 #include "environment.h"
 #include "earth.h"
-#include "datos_iniciales.h"
+//#include "datos_iniciales.h"
 
 #include<cmath>
 #include<iostream>

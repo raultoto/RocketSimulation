@@ -2,6 +2,8 @@
 #define GRAPHDATA_H
 #include <QObject>
 #include <QGraphicsPixmapItem>
+#include "rockettrajectory.h"
+#include "button.h"
 #include <fstream>
 #include <iostream>
 using namespace std;
@@ -12,9 +14,10 @@ public:
     GraphData();
     void loadFiles();
     void readFiles();
-public slots:
+    QGraphicsScene *scene1;
     void graphHeightWithTime();
     void graphVelocityWithTime();
+public slots:
 };
 
 #endif // GRAPHDATA_H
