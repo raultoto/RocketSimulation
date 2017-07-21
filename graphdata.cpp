@@ -5,15 +5,15 @@
 GraphData::GraphData()
 {
     //create a scene;
-    QGraphicsScene *scene = new QGraphicsScene();
-    scene->setSceneRect(0,0,800,800);
+    scene1 = new QGraphicsScene();
+    scene1->setSceneRect(0,0,800,800);
     QGraphicsRectItem *rect = new QGraphicsRectItem();
     QGraphicsRectItem *rect1= new QGraphicsRectItem();
     rect->setRect(0,400,800,0);
     rect1->setRect(400,0,0,800);
-    scene->addItem(rect);
-    scene->addItem(rect1);
-    QGraphicsView *view = new QGraphicsView(scene);
+    scene1->addItem(rect);
+    scene1->addItem(rect1);
+    QGraphicsView *view = new QGraphicsView(scene1);
     view->setFixedSize(350,700);
     view->show();
 }
@@ -30,7 +30,13 @@ void GraphData::readFiles()
 
 void GraphData::graphHeightWithTime()
 {
-
+    int cont=0;
+    while (cont<100) {
+        RocketTrajectory *trajectory3 = new RocketTrajectory();
+        scene1->addItem(trajectory3);
+        trajectory3->setPos(400,400+cont);
+        cont++;
+    }
 }
 
 void GraphData::graphVelocityWithTime()
