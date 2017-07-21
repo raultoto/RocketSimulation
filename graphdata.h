@@ -12,6 +12,7 @@
 #include <QGraphicsTextItem>
 #include <fstream>
 #include <iostream>
+#include <string>
 using namespace std;
 class GraphData:public QGraphicsView
 {

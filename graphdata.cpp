@@ -58,7 +58,7 @@ GraphData::GraphData(QWidget *parent)
     connect(graphButtom2,SIGNAL(clicked()),this,SLOT(velocityWithPressure()));
     scene1->addItem(trajectory3);
     scene1->addItem(graphButtom2);
-
+    readFiles();
 
 
 
@@ -71,6 +71,23 @@ GraphData::GraphData(QWidget *parent)
 
 void GraphData::readFiles()
 {
+    ifstream inputFile;
+    cout << "read file" << "------------------------------------------>" << endl;
+    inputFile.open("leerArchivo.txt");
+    string data;
+    if (inputFile.is_open())
+    {
+            cout << "hello";
+            while(!inputFile.eof())
+            {
+                getline(inputFile,data);
+                //lineCount++;
+                cout << "---------------------------------------------------------->" <<data << endl;
+                //wordC+=wordCount(frase);
+                //charC+=frase.length();
+            }
+            inputFile.close();
+     }
 
 }
 
