@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QGraphicsPixmapItem>
 #include "rockettrajectory.h"
+#include "button.h"
 #include <fstream>
 #include <iostream>
 using namespace std;
@@ -15,8 +16,8 @@ public:
     void readFiles();
     QGraphicsScene *scene1;
     void graphHeightWithTime();
-public slots:
     void graphVelocityWithTime();
+public slots:
 };
 
 #endif // GRAPHDATA_H

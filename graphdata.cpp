@@ -16,6 +16,15 @@ GraphData::GraphData()
     QGraphicsView *view = new QGraphicsView(scene1);
     view->setFixedSize(350,700);
     view->show();
+    /*Button* quitButton = new Button(QString("Quit"));
+    quitButton->setPos(400,400);
+    connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
+    scene1->addItem(quitButton);
+    //Button* graphButtom = new Button(QString("Graph"));
+    //graphButtom->setPos(400,450);
+    //connect(graphButtom,SIGNAL(clicked()),this,SLOT(callGraphData()));
+    //scene->addItem(graphButtom);*/
+
 }
 
 void GraphData::loadFiles()
@@ -34,7 +43,7 @@ void GraphData::graphHeightWithTime()
     while (cont<100) {
         RocketTrajectory *trajectory3 = new RocketTrajectory();
         scene1->addItem(trajectory3);
-        trajectory3->setPos(400,400+cont);
+        trajectory3->setPos(400+cont,400-cont);
         cont++;
     }
 }
