@@ -4,20 +4,30 @@
 #include <QGraphicsPixmapItem>
 #include "rockettrajectory.h"
 #include "button.h"
+//---
+#include <QObject>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsWidget>
+#include <QGraphicsTextItem>
 #include <fstream>
 #include <iostream>
 using namespace std;
-class GraphData:public QObject
+class GraphData:public QGraphicsView
 {
     Q_OBJECT
 public:
-    GraphData();
-    void loadFiles();
-    void readFiles();
+    GraphData(QWidget *parent=0);
+
+    void readFiles();//lee un archivo
+    //public functions
+    //public objects
     QGraphicsScene *scene1;
-    void graphHeightWithTime();
-    void graphVelocityWithTime();
 public slots:
+    void graphHeightWithTime();//altura con el tiempo
+    void graphVelocityWithTime();//velocidad conntra el tiempo
+    void velocityWithPressure();//velocidad con presion
+
 };
 
 #endif // GRAPHDATA_H

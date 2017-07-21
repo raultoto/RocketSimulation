@@ -3,5 +3,4 @@
 EarthInterface::EarthInterface()
 {
     setPixmap(QPixmap(":/images/Images/earth.jpg"));
-
 }

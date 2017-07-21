@@ -54,9 +54,6 @@ int main(int argc, char *argv[])
     menu=new Menu();
     menu->show();
     menu->displayMainMenu();
-
-    cout<<"Todo se puede de veras";
-
     double latitud=40.7127837 ,altitud=23 ,longitud=-74.00594130000002
             ,dlatitud=2,temperatura=20,densidad=123,presion=2000
             ,dtemperatura=10,daltitud=4,ddensidad=1,dpresion=2

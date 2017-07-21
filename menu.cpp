@@ -114,7 +114,7 @@ void Menu::callMovementHeight()
 void Menu::callGraphData()
 {
     graph = new GraphData();
-    graph->graphHeightWithTime();
+    //graph->graphHeightWithTime();
     //scene->addItem(graph);
     //graph->graphHeightWithTime();
 }
