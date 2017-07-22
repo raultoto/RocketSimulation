@@ -2,19 +2,41 @@
 #define GRAPHDATA_H
 #include <QObject>
 #include <QGraphicsPixmapItem>
+#include "rockettrajectory.h"
+#include "button.h"
+//---
+#include <QObject>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsWidget>
+#include <QGraphicsTextItem>
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <vector>
 using namespace std;
-class GraphData:public QObject
+class GraphData:public QGraphicsView
 {
     Q_OBJECT
 public:
-    GraphData();
-    void loadFiles();
-    void readFiles();
+    GraphData(QWidget *parent=0);
+
+    void readFiles();//lee un archivo
+    double stringToInt(string);
+    void convertStringToNumber(string);
+    //public functions
+    //public objects
+    QGraphicsScene *scene1;
+private:
+    vector<double>vec1;
+    vector<double>vec2;
 public slots:
-    void graphHeightWithTime();
-    void graphVelocityWithTime();
+    void graphHeightWithTime();//altura con el tiempo
+    void graphVelocityWithTime();//velocidad conntra el tiempo
+    void velocityWithPressure();//velocidad con presion
+
 };
 
 #endif // GRAPHDATA_H

@@ -46,7 +46,7 @@ void Menu::displayMainMenu()
     scene->addItem(titleText);
 
     // create the start button
-    Button* playButton = new Button(QString("Start"));
+    Button* playButton = new Button(QString("Start"),200,50);
     int bxPos = this->width()/2 - playButton->boundingRect().width()/2;
     int byPos = 275;
     playButton->setPos(1725,900);
@@ -54,7 +54,7 @@ void Menu::displayMainMenu()
     scene->addItem(playButton);
 
     // create the quit button
-    Button* quitButton = new Button(QString("Quit"));
+    Button* quitButton = new Button(QString("Quit"),200,50);
     int qxPos = this->width()/2 - quitButton->boundingRect().width()/2;
     int qyPos = 350;
     quitButton->setPos(1725,1000);
@@ -84,22 +84,24 @@ void Menu::start()
     showData = new ShowData();
     scene->addItem(showData);
     //create and movementHeight to the scene
-    Button* callHeightButton = new Button(QString("View Height"));
+    Button* callHeightButton = new Button(QString("View Height"),200,50);
     callHeightButton->setPos(1725,1000);
+    //callHeightButton->setPos(rocketInterface->x()+100,rocketInterface->y());
     connect(callHeightButton,SIGNAL(clicked()),this,SLOT(callMovementHeight()));
     scene->addItem(callHeightButton);
 
     //scene->addItem(move);
-    Button* quitButton = new Button(QString("Quit"));
+    Button* quitButton = new Button(QString("Quit"),200,50);
     quitButton->setPos(1725,1100);
     connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
     scene->addItem(quitButton);
 
 
-    Button* graphButtom = new Button(QString("Graph"));
+    Button* graphButtom = new Button(QString("Graph"),200,50);
     graphButtom->setPos(1725,900);
     connect(graphButtom,SIGNAL(clicked()),this,SLOT(callGraphData()));
     scene->addItem(graphButtom);
+
 
 }
 
@@ -112,5 +114,7 @@ void Menu::callMovementHeight()
 void Menu::callGraphData()
 {
     graph = new GraphData();
+    //graph->graphHeightWithTime();
     //scene->addItem(graph);
+    //graph->graphHeightWithTime();
 }

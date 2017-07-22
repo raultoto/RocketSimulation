@@ -141,8 +141,6 @@ T Rocket<T>::get_velocidad_ascenso()
     return vascenso;
 }
 
-
-
 template<class T>
 void Rocket<T>::get_cdycl()
 {

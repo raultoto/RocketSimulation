@@ -2,9 +2,11 @@
 #include <QGraphicsTextItem>
 #include <QBrush>
 
-Button::Button(QString name, QGraphicsItem *parent): QGraphicsRectItem(parent){
+Button::Button(QString name, int x,int y,QGraphicsItem *parent)
+    : QGraphicsRectItem(parent),width(x),height(y)
+{
     // draw the rect
-    setRect(0,0,200,50);
+    setRect(0,0,this->width,this->height);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::darkCyan);
