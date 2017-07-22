@@ -13,6 +13,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 class GraphData:public QGraphicsView
 {
@@ -21,9 +24,14 @@ public:
     GraphData(QWidget *parent=0);
 
     void readFiles();//lee un archivo
+    double stringToInt(string);
+    void convertStringToNumber(string);
     //public functions
     //public objects
     QGraphicsScene *scene1;
+private:
+    vector<double>vec1;
+    vector<double>vec2;
 public slots:
     void graphHeightWithTime();//altura con el tiempo
     void graphVelocityWithTime();//velocidad conntra el tiempo

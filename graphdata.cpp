@@ -72,32 +72,56 @@ GraphData::GraphData(QWidget *parent)
 void GraphData::readFiles()
 {
     ifstream inputFile;
-    cout << "read file" << "------------------------------------------>" << endl;
-    inputFile.open("leerArchivo.txt");
+    inputFile.open("prueba.csv");
     string data;
     if (inputFile.is_open())
     {
-            cout << "hello";
             while(!inputFile.eof())
             {
                 getline(inputFile,data);
-                //lineCount++;
-                cout << "---------------------------------------------------------->" <<data << endl;
-                //wordC+=wordCount(frase);
-                //charC+=frase.length();
+                //cout << data << endl;
+                convertStringToNumber(data);
             }
             inputFile.close();
      }
 
 }
 
+double GraphData::stringToInt(string number)
+{
+    stringstream sstr;
+    sstr << number;
+    double converted;
+    sstr >> converted;
+    return converted;
+
+}
+
+void GraphData::convertStringToNumber(string number)
+{
+    string str1,str2;
+
+    for (int i = 0; i < number.length(); ++i) {
+        if(number[i]!=',')
+            str2=str2+number[i];
+        else
+        {
+            str1=str2;
+            str2="";
+        }
+        //cout << number[i] << endl;
+    }
+    vec1.push_back(stringToInt(str1));
+    vec2.push_back(stringToInt(str2));
+}
+
 void GraphData::graphHeightWithTime()
 {
     int cont=0;
-    while (cont<100) {
+    while (cont<vec1.size()) {
         RocketTrajectory *trajectory3 = new RocketTrajectory("*",1);
         scene1->addItem(trajectory3);
-        trajectory3->setPos(400+cont,400-cont);
+        trajectory3->setPos(400+vec1[cont],400+vec2[cont]);
         cont++;
     }
 }
