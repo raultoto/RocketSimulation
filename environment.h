@@ -12,31 +12,32 @@ class Environment
    friend class Rocket<T>;//the class rocket is fried->this class
 public:
     Environment();
-    Environment(T densidadaireb,T presiobase,T temperatureb1,T altitud);
+    Environment(T altitude_now );
 
-    T getAirDensity();
-    T getLatitude();
+    T getAirDensity();   
     T getLenght();
-
+    T get_Altitudg();
+    //T diferencial_altitud();
     T Lm_pendiente();
     T getdensitybyLm();
     T getpresionbyLm();
+    T dif_altitud();
     void  getemperature();
-    void getspeedsound() ;
-    void setvar(T a,T pressureb1,T temperaturab1,T  hb1);
+    T getspeedsound() ;
+    void setvar(T altitud);
 private:
-    T pressureb ;
-    T airDensity=1212;// densidad del aire
-    T latitudeb; // la latidus = como altitude geometrica
+    ///////////inicializar variables
+    T pressureb=14.5;
+    T temperatureb=282;
+    T airDensityb=28.2;// densidad del aire
+    T altitudeb=12; //a#include<cmath>ltitud
     T lenghtb; // longitud ;
-    T altitudeb; //a#include<cmath>ltitud
-    T altitudenow;//altitud geometrica
     Earth<T>tierra;
-    T temperatureb;
+    T altitudenow;
     T temperaturenow;
     T speedsound;
     T h;//la latitud geopontencial
-    T hb;
+    T hb=1.5;
     T Lm;
     T t;
     T R = 286.9;//constante de gases ideales

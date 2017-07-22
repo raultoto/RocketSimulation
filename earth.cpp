@@ -5,13 +5,13 @@ Earth<T>::Earth()
 
 }
 
-
-template<typename T>
-Earth<T>::Earth(T & altitude)
+template<class T>
+void Earth<T>::set_var (T & altitude)
 {
-    getdGravitybyheight(altitude);
     this->altitude=altitude;
+    getdGravitybyheight();
 }
+
 /*
  * Esta j2 es para coordenadas esfericas
 d*/
@@ -25,8 +25,11 @@ T funcionbessel(T x)
 template<typename T>
 T Earth<T>::get_W(T masa_cohete,T velocidad_ascenso,T phi)
 {
-    this->Wr=(G*masa*masa_cohete)/pow(velocidad_ascenso,2)*(1+pow(r_tierra_ecuador/velocidad_ascenso,2)* funcion_bessel(1-pow(3*sin(phi),2) ) );
-    this->Wphi=3*G*masa*masa_cohete/pow(velocidad_ascenso,2)*pow(r_tierra_ecuador/velocidad_ascenso,2)*
+    cout<<"velocidad de ascenso"<<velocidad_ascenso<<endl;
+    cout<<"ecuacion"<<(1-pow(3*sin(phi),2) );
+    this->Wr=(G*masa*masa_cohete)/pow(velocidad_ascenso,2)*(1+pow(r_tierra_ecuador/velocidad_ascenso,2)* J2*(1-pow(3*sin(phi),2) ) );
+    this->Wphi=(3*G*masa*masa_cohete/(pow(velocidad_ascenso,2)) )*
+            ( pow(r_tierra_ecuador/velocidad_ascenso,2) )*
             J2*(sin(phi)*cos(phi))  ;
     T W = Wr+Wphi;
     qDebug()<<"probando";
@@ -41,22 +44,13 @@ T Earth<T>::get_radiovector()
     this->radio_vector=r_mediotierra+altitude;
     return radio_vector;
 }
-template<typename T>
-void Earth<T>::set_altitude(T altitude1)
-{
-    this->altitude=altitude1;
-}
-/*template<typename T>
-Earth<T>::get_wr(){
-    T G=6.67*pow(10,11);//constante de cavendish
-}*/
 
-
-
+/////////////ecuacion(7)Incremento de la gravedad
 template<typename T>
 T Earth<T> :: getdGravitybyheight()
 {
     this->gravitynow=gravityb*pow(r_mediotierra/(r_mediotierra+altitude),2);
+    return gravitynow;
 }
 
 template<typename T>

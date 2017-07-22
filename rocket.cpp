@@ -12,7 +12,7 @@ T get_velocidadascenso(T antheta,T V)
 
 
 /*Esto es un limite con el sonido
- * Se utilizara para el coeficiente de friccion
+ * Se utilizara para el coeiciente de riccion
  * A un determinada velocidad varia el comportamiento del aire
 */
 template<class T>
@@ -29,77 +29,111 @@ Rocket<T>::Rocket()
 
 }
 
-///////desde aqui modifique//////////
+///////desde aqui modiique//////////
 template <typename T>
-Rocket<T>::Rocket(T& altitud,T& vb1, T & latitud,T &longitud,T & dt)
-    :height(altitud),vb(vb1),latitude(latitud),longitude(longitud),dt(dt)
+Rocket<T>::Rocket(T& altitud,T& vb, T & latitud,T &longitud,T & dt)
+    :height(altitud),v(vb),latitude(latitud),longitude(longitud),dt(dt),vb(vb)
 {
-    T temperatureb=121;
-    T presionb=121;
     a=0;
-    dough=200;
-    height=211;//altitud
     area_nozzle=121;
-    diameter=1212;//diametro maximo del cohete
+    diameter=212;//diametro maximo del cohete
     tip_length=121;
-    vb=v;
-
-     mytierra.set_altitude(altitud);
-     velocity();
-     theta=-mytierra.gravitynow*cos(theta)/v;
+    ambiente.setvar(altitud);
+    mytierra.set_var(altitud);
     A=diameter*diameter/4 * PI;
     update_var();
-    ambiente.setvar(12,presionb,temperatureb,height);//T a,T pressureb1,T temperaturab1,T  hb1
+    ambiente.setvar(altitud);//T a,T pressureb1,T temperaturab1,T  hb1
 }
 
+template<class T>
+void Rocket<T> :: setlatitud_longitud(T & latitud,T & longitud,T & altitud)
+{
+    this->latitude= latitud;
+    this->longitude=longitud;
+    //radio_vector=get_radio_vector(theta,v);
+    ambiente.setvar(altitud);
+    mytierra.set_var(altitud);
+    update_var();
+   // cout<<"densidad"<<ambiente.getdensitybyLm();
+    //cout<<"tpq="<<q;
+}
+
+template<class T>
+void Rocket<T> :: update_var()
+{
+    dough=20;//masa cambiable
+    ///hallando arrastre coeicientes de arrastre y sustentacion
+    theta=-mytierra.gravitynow*cos(theta)/v;
+    q=(1.0/2.0)*ambiente.getdensitybyLm()*vb*vb;
+    get_cdycl();
+    this->phi=(v*sin(theta)*cos(azimut))/r ;
+    this->lamnda=(v*sin(theta)*sin(azimut))/r*cos(phi);
+}
 
 
 /*
  * aceleracion
- * todavia falta variables por definir
+ * todavia alta variables por deinir
 */
 
 template<class T>
 void Rocket<T>::acceleration()
 {
-    num_push=12;
-    anguloataque=0;
     D=drag();
-
+    r=2;
+    phi=37;
+     anguloataque=12;
+    cout<<"phi!"<<phi;
+    //aptualizo w
     mytierra.get_W(dough,r,phi);
     this->a=num_push*cos(anguloataque)/dough -D/dough-mytierra.Wr*cos(theta)/dough + mytierra.Wphi*sin(theta)*cos(azimut)/dough
     -pow(w,2)*r*cos(phi)*(sin(phi)*sin(theta)*cos(azimut)-cos(phi)*cos(theta));
+    cout<<"ACELERACION"<<num_push*cos(anguloataque)/dough-D ;
+}
 
-    qDebug()<<a;
+
+template<class T>
+T Rocket<T> :: dif_velocity()
+{
+    return this->dv;
 }
 
 template<class T>
-void Rocket<T>::velocity( )
+void Rocket<T>::velocity()
 {
     acceleration();
-    T dv = a*dt;
+    dv = a*dt;
     this->v=v+dv;
+
     T dvx=v*cos(theta);
     T dvy=v*cos(90-azimut);
     T dvz=v*cos(azimut);
-    this->difvector_velocity.setX(dvx);
-    this->difvector_velocity.setY(dvy);
-    this->difvector_velocity.setZ(dvz);
+
     this->vector_velocity.setX(dvx+vector_velocity.getX() );
-    this->vector_velocity.setX(dvy+vector_velocity.getY() );
-    this->vector_velocity.setX(dvz+vector_velocity.getZ() );
-    T dx=vector_velocity.getX();
-    T dy=vector_velocity.getY();
-    T dz=vector_velocity.getZ();
+    this->vector_velocity.setY(dvy+vector_velocity.getY() );
+    this->vector_velocity.setZ(dvz+vector_velocity.getZ() );
+}
+
+template<typename T>
+void Rocket<T>::position()
+{
+    T dx=vector_velocity.getX()*dt;
+    T dy=vector_velocity.getY()*dt;
+    T dz=vector_velocity.getZ()*dt;
     this->posicion.setX(posicion.getX()+dx);
     this->posicion.setY(posicion.getY()+dy);
     this->posicion.setZ(posicion.getZ()+dz);
-    cout<<"la velocidad es igual"<<vector_velocity.getX()<<" "<<vector_velocity.getY()<<" "<<vector_velocity.getZ()<<"  "<<endl;
-    cout<<"posicion"<<posicion.getX()<<" "<<posicion.getY()<<" "<<posicion.getZ()<<"  "<<endl;
-
 }
 
+template<typename T>
+void Rocket<T>::movimiento()
+{
+    acceleration();
+    velocity();
+    position();
+}
 
+//r
 template<class T>
 T Rocket<T>::get_velocidad_ascenso()
 {
@@ -110,60 +144,37 @@ T Rocket<T>::get_velocidad_ascenso()
 
 
 template<class T>
-void Rocket<T> :: setlatitud_longitud(T & latitud,T & longitud)
-{
-this->latitude= latitud;
-this->longitude=longitud;
-    velocity();
-    //radio_vector=get_radio_vector(theta,v);
-    update_var();
-}
-
-template<class T>
 void Rocket<T>::get_cdycl()
 {
+    ///presion dinamica q=S
     T divide =tip_length/diameter;
-    ambiente.getspeedsound();
+    //ambiente.getspeedsound();
     T numMatch=mach(v,ambiente.speedsound);
-    //coeficiente de arrastre se divide en 3 coeficientre de onda ,coeficiente base y coeficiente friccion
-    T cdf=0.53*(divide)*pow(dough/ q *tip_length,0.2);//coeficiente de friccion por la forma del cuerpo
+    cout<<"densidad de Lm"<<ambiente.getdensitybyLm()<<endl;
+    q=(1.0/2.0)*ambiente.getdensitybyLm()*vb*vb;
+    cout<<"q"<<ambiente.getdensitybyLm();
+    cout<<dough/q*tip_length;
+    //coeiciente de arrastre se divide en 3 coeicientre de onda ,coeiciente base y coeiciente riccion
+    T cd=0.53*(divide)*pow(dough/q*tip_length,0.2);//coeiciente de riccion por la orma del cuerpo
     T cdo=0;
     T cdb=0.12+0.13*pow(dough,2);
 
-    if(numMatch>=1 )
+    if(numMatch)
     {   if(divide<25 && divide>5)///que pasa en los casos cuando no esta en estos parametros
             cdo=(1586+1834/pow(dough,2))*pow(1/(tan(0.5/divide)) ,1.69);
         cdb=0.25/numMatch;
-        this->Cd=cdf+cdo+cdb;
+        this->Cd=cd+cdo+cdb;
     }
-
     else
-        this->Cd=cdf+cdb;
+        this->Cd=cd+cdb;
     this->Cl=0.53*(sin(2*anguloataque)*cos(anguloataque/2))+(divide)* pow(sin(anguloataque),2);
 }
 
 
-template<class T>
-void Rocket<T> :: update_var()
-{
-   // vectores<T> vax=j.escalar(radio_vector * velocidadangulo.getZ(),j) + k.escalar(radio_vector*velocidadangulo.getZ(),k) ;
-   // mytierra.set_altitude(altitud);
-    T vay=(-v*sin(theta)*cos(azimut))/mytierra.radio_vector ;
-    T vaz=(v*sin(theta)*sin(azimut))/mytierra.radio_vector ;
-    velocidadangulo.setY(vay);
-    velocidadangulo.setZ(vaz);
-    velocidadangulo.setX(vaz);
-    q=1/2*v*v*ambiente.airDensity;///presion dinamica q
-
-    ///hallando arrastre coeficientes de arrastre y sustentacion
-    get_cdycl();
-    this->phi=v*sin(theta)*cos(azimut)/r ;
-    this->lamnda=v*sin(theta)*sin(azimut)/r*cos(phi);
-}
 ///////hasta aqui//////////
 template<class T>
 T Rocket<T> :: push()
-{
+{///A=area de la tobera
     this->num_push=dough*velocityout + A*(pressuergases-ambiente.getpresionbyLm() );
     return num_push;
 }
@@ -173,19 +184,18 @@ T Rocket<T> :: lift()
 {
     return 1/2*ambiente.airDensity*pow(v,2)*A*Cl;
 }
-
+/*
 template<class T>
 T Rocket<T>::gravity()
 {
     return 55;
-}
-
+}*/
+///////////////////////////////////////nan
 template<class T>
 T Rocket<T>::drag()
 {
     get_cdycl();
-    this->D=1/2*ambiente.airDensity*pow(v,2)*A;//*Cd;
-   // cout<<"Arrastres ="<<D;
+    this->D=1/2*ambiente.airDensityb*pow(v,2)*A*Cd;
     return D;
 }
 

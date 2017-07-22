@@ -7,39 +7,54 @@ Environment<T>::Environment()
 }
 
 template <typename T>
-Environment<T>::Environment(T a,T pressureb1,T temperaturab1,T  hb1)
-    :airDensity(a),pressureb(pressureb1),temperatureb(temperaturab1),hb(hb1)
+Environment<T>::Environment(T altitude_now )
 {
-    this->h=tierra.r_mediotierra/(tierra.r_mediotierra+altitudenow)*altitudenow;
-    this->Lm=Lm_pendiente();
-    this->h=hb;
+    ///condiciones inciales
+    tierra.set_var(altitude_now);
+    this->hb=0;
+    this->h=tierra.r_mediotierra/(tierra.r_mediotierra+altitude_now)*altitude_now;
+    this->altitudenow=altitude_now;
+    this->Lm=Lm_pendiente();//referido a los gradientes termicos
+
     getemperature();
     getspeedsound();
     getdensitybyLm();
 }
 
+//////esto muy principal
+template<typename T>
+T Environment<T>::dif_altitud( ){
+    cout<<"gravedad"<< (tierra.getdGravitybyheight()/tierra.gravityb)*altitudenow;
+    return (tierra.getdGravitybyheight()/tierra.gravityb )*altitudenow;
+}
+template<typename T>
+T Environment<T>:: get_Altitudg()
+{
+    return h;
+}
 
 template<typename T>
-void Environment<T>::setvar(T a,T pressureb1,T temperaturab1,T  hb1)
+void Environment<T>::setvar(T altitud2 )
 {
-    airDensity=a;
-    pressureb=pressureb1;
-    temperatureb=temperaturab1;
-    hb=hb1;
-    this->h=tierra.r_mediotierra/(tierra.r_mediotierra+altitudenow)*altitudenow;
+    tierra.set_var(altitud2);
+    this->h=(tierra.r_mediotierra/(tierra.r_mediotierra+altitud2))*altitud2;
+    this->altitudenow=altitud2;
     this->Lm=Lm_pendiente();
-    this->h=hb;
+    cout<<"Lm"<<Lm;
+    tierra.set_var(altitud2);
     getemperature();
     getspeedsound();
     getdensitybyLm();
+    cout<<"altitud"<<altitud2<<endl;
 }
 
 
 template<typename T>
-void Environment<T>::getspeedsound()
+T Environment<T>::getspeedsound()
 {
 
      this->speedsound=pow(r*R*temperaturenow,0.5) ;
+    return speedsound;
 }
 
 //segun la tabla de ARDC1959
@@ -64,6 +79,7 @@ T Environment<T>::Lm_pendiente()
         return 0;
     if(altitudenow>=91 && altitudenow<1000)
         return 12;
+    return -1000;
 }
 //h=altitud geopontecial,altura repecto a la gravedad
 template<typename T>
@@ -78,32 +94,30 @@ template<typename T>
 T Environment<T>::getdensitybyLm()
 {
     //altura geopontecial,saca la altura respecto a la gravedad
-    if(Lm)
-        return airDensity*pow(temperatureb/temperaturenow,1+(tierra.gravityb/R*Lm));
-    else
-        return airDensity*pow(e,-tierra.gravityb*(h-hb)/R*temperatureb);
+   if(Lm != 0)
+        return airDensityb*pow(temperatureb/temperaturenow,1+(tierra.gravityb/R*Lm)) ;
+    if(Lm==0)
+        return airDensityb*pow(1/e,tierra.gravityb*(h-hb)/R*temperatureb);
+    return -1000;
 }
 
 template<typename T>
 T Environment<T>::getpresionbyLm()
 {
     if (Lm)
-        return pressureb*pow(temperatureb/temperaturenow,-tierra.gravityb/(R*Lm));
+        return pressureb*pow(temperaturenow/temperatureb ,tierra.gravityb/(R*Lm));
     else
-        return pressureb*pow(e,-tierra.gravityb*(h-hb)/R*temperatureb );
+        return pressureb*pow(1/e,tierra.gravityb*(h-hb)/R*temperatureb );
+    return -1000;
 }
 
 template <typename T>
 T Environment<T>::getAirDensity()
 {
-    return airDensity;
+    return airDensityb;
 }
 
-template <typename T>
-T Environment<T>::getLatitude()
-{
-    return latitudeb;
-}
+
 
 template <typename T>
 T Environment<T>::getLenght()

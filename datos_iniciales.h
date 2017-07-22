@@ -1,0 +1,6 @@
+#ifndef DATOS_INICIALES_H
+#define DATOS_INICIALES_H
+
+
+
+#endif // DATOS_INICIALES_H
