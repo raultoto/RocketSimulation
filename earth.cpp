@@ -27,14 +27,14 @@ T Earth<T>::get_W(T masa_cohete,T velocidad_ascenso,T phi)
 {
     cout<<"velocidad de ascenso"<<velocidad_ascenso<<endl;
     cout<<"ecuacion"<<(1-pow(3*sin(phi),2) );
-    this->Wr=(G*masa*masa_cohete)/pow(velocidad_ascenso,2)*(1+pow(r_tierra_ecuador/velocidad_ascenso,2)* J2*(1-pow(3*sin(phi),2) ) );
-    this->Wphi=(3*G*masa*masa_cohete/(pow(velocidad_ascenso,2)) )*
+    this->wr=(G*masa*masa_cohete)/pow(velocidad_ascenso,2)*(1+pow(r_tierra_ecuador/velocidad_ascenso,2)* J2*(1-pow(3*sin(phi),2) ) );
+    this->wphi=(3*G*masa*masa_cohete/(pow(velocidad_ascenso,2)) )*
             ( pow(r_tierra_ecuador/velocidad_ascenso,2) )*
             J2*(sin(phi)*cos(phi))  ;
-    T W = Wr+Wphi;
-    qDebug()<<"probando";
-    qDebug()<<Wr;
-    qDebug()<<Wphi;
+    T W = wr+wphi;
+    /*^qDebug()<<"probando";
+    qDebug()<<wr;
+    qDebug()<<wphi;*/
     return W;
 }
 
@@ -76,3 +76,14 @@ T Earth<T>::getHeight()
 return height;
 }
 
+template<typename T>
+T Earth<T>::get_wr()
+{
+return wr;
+}
+
+template<typename T>
+T Earth<T>::get_wphi()
+{
+    return wphi;
+}

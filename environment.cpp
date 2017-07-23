@@ -77,7 +77,7 @@ T Environment<T>::Lm_pendiente()
         return -2;
     if(altitudenow>=86 && altitudenow<91)
         return 0;
-    if(altitudenow>=91 && altitudenow<1000)
+    if(altitudenow>=91 && altitudenow<10000)
         return 12;
     return -1000;
 }

@@ -36,8 +36,8 @@ public:
     T get_radiovector();
    // void set_altitude(T altitude1);
     T get_W(T masa_cohete,T velocidad_ascenso,T phi);//W fuerza de atraccion gravitacional
-    //void get_wr();
-    //void get_wr();
+    T get_wr();
+    T get_wphi();
      T radio_vector;// distancia entre la tierra y el cohete
 private:
 
@@ -49,8 +49,8 @@ private:
     T height ;
     T r_tierra_ecuador=6378136.6 ;// esto es en metros
     T G=6.13*pow(10,-11);//esto esta en Nm^2/kg^2
-    T Wr;//Fuerza de atraccion gravitacional con respecto a r
-    T Wphi;
+    T wr;//Fuerza de atraccion gravitacional con respecto a r
+    T wphi;
     T J2=0.00108263;
     double r_mediotierra=6378.14;
 };
