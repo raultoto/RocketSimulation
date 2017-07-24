@@ -56,7 +56,7 @@ public:
     T get_phi();
     T get_lamnda();
     T get_tall();
-    void movimiento();
+    T get_doughtxetapa();
     T dif_dought();
     vectores<T> vector_velocity;
     vectores<T> posicion;
@@ -66,6 +66,7 @@ public:
     T dv;
     T v;
     double theta;
+     double azimut;
 private:
     T latitude;
     T longitude;
@@ -79,7 +80,7 @@ private:
     T wr;
     T wphi;
     Earth<T> mytierra;//T a,T pressureb1,T temperaturab1,T  hb1)
-
+    T doughtxetapa;
     double q;
     T Cl;//coeficiente de sustentacion
     T Cd;//coeficientes de arrastre
@@ -88,30 +89,28 @@ private:
     T velocityout;//es la velocidad que los gases estan saliendo
     T velocitysoun;
     double dt;
-    double azimut;
+
 
     double phi;//angulo delatitud
     double lamnda;//angulo de longitud
 
 ////////////////datos iniciales del cohete//////////////////
     double vb;
-    double dough_expel=1.1;
+    double dough_expel=1.67;
     double velocity_expel=1.2;
     double tall;
     double dough;
     double dough_tobera=20;
-    double doughcarga=343;
     double areaall=5454;
     double area_nozzle=223;//area de la tobera
-    double diameter=245;//diametrocohete
+    double diameter=2;//diametrocohete
     double tip_length=4; //longitu de punta=cono(modelismo)
 
     double anguloataque=0;//definido por el libro como constante
 
     double A=(diameter*diameter*PI)/4;//reference_surface
 
-    vectores<T> velocidadangulo;
-    T r=1;
+    T r;
 };
 
 

@@ -34,19 +34,21 @@ Rocket<T>::Rocket()
 ///tall=1.0;comienza a partir el cohete desde 1s
 template <typename T>
 Rocket<T>::Rocket(T& altitud,T& vb, T & latitud,T &longitud,T & dt)
-    :height(altitud),v(vb),phi(latitud),lamnda(longitud),dt(dt),vb(vb),tall(1)
+    :height(altitud),v(vb),phi(latitud),lamnda(longitud),dt(dt),vb(vb),tall(1),theta(20),azimut(0)
 {
     dough=121;
     a=0;
     w=1;
-   // diameter=212;//diametro maximo del cohete
+    diameter=212;//diametro maximo del cohete
     tip_length=121;
+    phi=latitud;
     ambiente.setvar(altitud);
     mytierra.set_var(altitud);
     //A=diameter*diameter/4 * PI;
     update_var();
-    theta=0;
-    r=mytierra.r_mediotierra+altitud;
+   //theta=20;
+    //azimut=0;
+
 }
 
 template<class T>
@@ -54,33 +56,28 @@ void Rocket<T> :: setlatitud_longitud(T & latitud,T & longitud,T & altitud,T v1)
 {
     height=altitud;
     v=v1;
+     dough=120;//masa cambiable
     tall=tall + dt;
     phi= latitud;
     this->lamnda=longitud;
     ambiente.setvar(altitud);
     mytierra.set_var(altitud);
     update_var();
-    r=mytierra.r_mediotierra+altitud;
+    r=mytierra.r_mediotierra*pow(10,20)+altitud;
 }
-
 template<class T>
 void Rocket<T> :: update_var()
 {
-
-    azimut=0;
-    //theta=20;
-    dough=120;//masa cambiable
+    r=mytierra.r_mediotierra*pow(10,20)+ambiente.get_height();
+    cout<<"phi"<<phi;
     ///hallando arrastre coeicientes de arrastre y sustentacion
-    ////theta=-mytierra.gravitynow*cos(theta)/v;
     q=(1.0/2.0)*ambiente.getdensitybyLm()*vb*vb;
     get_cdycl();
-    this->phi=(v*sin(theta)*cos(azimut))/r ;
-    this->lamnda=(v*sin(theta)*sin(azimut))/r*cos(phi);
     this->Push =push();
     this->L = lift();
     mytierra.get_W(dough,r,phi);
-    this->wr =mytierra.get_wr();
-    this->wphi =mytierra.get_wphi();
+    this->wr =mytierra.get_wr();//12;
+    this->wphi =mytierra.get_wphi();//10;
 }
 
 ///lo mas importante funcion
@@ -91,13 +88,13 @@ T Rocket<T> :: dif_altitud()
    T daltitudg=ambiente.dif_altitud();
    return daltitudg;
 }
-
+//ecuacion(44)
 template<class T>
 T Rocket<T> :: dif_phi()
 {
    return (v*sin(theta)*cos(azimut) )/r;
 }
-
+//ecuacion (45)
 template<class T>
 T Rocket<T> :: dif_lamnda()
 {
@@ -125,8 +122,8 @@ T Rocket<T> :: dif_azimut()
 /*
  * aceleracion
  * todavia alta variables por deinir
+ * ecuacion (60)
 */
-
 template<class T>
 void Rocket<T>::aceleration()
 {
@@ -137,7 +134,6 @@ void Rocket<T>::aceleration()
     //aptualizo w
     this->a=Push*cos(anguloataque)/dough -D/dough-mytierra.wr*cos(theta)/dough + mytierra.wphi*sin(theta)*cos(azimut)/dough
     -pow(w,2)*r*cos(phi)*(sin(phi)*sin(theta)*cos(azimut)-cos(phi)*cos(theta));
-    this->a=a*1/1000000000000000000000000000000000000000000000000000000000000;
     cout<<"ACELERACION"<<a<<"phi"<<phi<<" lambda "<<lamnda<<"theta"<< theta <<endl;
 }
 
@@ -145,21 +141,17 @@ void Rocket<T>::aceleration()
 template<class T>
 vectores<T> Rocket<T>::dif_velocity()
 {
-    cout<<"V"<<v;
-    dv = a*dt;
-    cout<<"fiferencial de la velocidad"<<dv<<" v"<<v;
+    dv = a*dt;   
     v=v+dv;
-    cout<<"v es igual a"<<v;
+
     ///////convertir el vector v en x,y,z
-    vectores<T> dv;
-    dv.setX(v*cos(theta));
-    dv.setY(v*cos(90-azimut));
-    dv.setZ(v*cos(azimut));
-    return dv;
-/*
-    this->vector_velocity.setX(dvx+vector_velocity.getX() );
-    this->vector_velocity.setY(dvy+vector_velocity.getY() );
-    this->vector_velocity.setZ(dvz+vector_velocity.getZ() );*/
+    difvector_velocity.setZ(v*cos(azimut));
+    T fh=v*sin(azimut);
+    difvector_velocity.setX(fh*cos(theta));
+
+    difvector_velocity.setY(fh*sin(theta));
+
+    return difvector_velocity;
 }
 
 template<typename T>
@@ -178,13 +170,6 @@ T Rocket<T>::get_tall()
 {
     return tall;
 }
-/*template<typename T>
-void Rocket<T>::movimiento()
-{
-    aceleration();
-    dif_velocity();
-    position();
-}*/
 
 //r
 template<class T>
@@ -223,13 +208,11 @@ void Rocket<T>::get_cdycl()
     this->Cl=0.53*(sin(2*anguloataque)*cos(anguloataque/2))+(divide)* pow(sin(anguloataque),2);
 }
 
-
 ///////integral ecuacion2//////////
 template<class T>
 T Rocket<T> :: push()
 {
-    cout<<"tall!!"<<this->tall<<"termino";
-    cout<<"push!!!!!!!"<<(dough_expel*velocity_expel)/tall;
+    doughtxetapa=dough-dough_expel*tall;
     if(dough_expel*tall<=dough_tobera)
     {   this->Push=(dough_expel*velocity_expel)/tall;
         return Push;
@@ -296,4 +279,10 @@ template<class T>
 T Rocket<T>::get_lamnda()
 {
     return lamnda;
+}
+
+template<class T>
+T Rocket<T>::get_doughtxetapa()
+{
+    return doughtxetapa;
 }

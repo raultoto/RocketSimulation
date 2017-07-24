@@ -25,6 +25,7 @@ public:
     void  getemperature();
     T getspeedsound() ;
     void setvar(T altitud);
+    T get_height();
 private:
     ///////////inicializar variables
     T pressureb=14.5;
