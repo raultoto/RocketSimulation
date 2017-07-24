@@ -44,7 +44,7 @@ Rocket<T>::Rocket(T& altitud,T& vb, T & latitud,T &longitud,T & dt)
     phi=latitud;
     ambiente.setvar(altitud);
     mytierra.set_var(altitud);
-    A=diameter*diameter/4 * PI;
+    //A=diameter*diameter/4 * PI;
     update_var();
    //theta=20;
     //azimut=0;
