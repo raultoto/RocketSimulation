@@ -22,19 +22,19 @@ T funcionbessel(T x)
     return j2;
 }
 
+//ecuacion (47)
 template<typename T>
-T Earth<T>::get_W(T masa_cohete,T velocidad_ascenso,T phi)
+T Earth<T>::get_W(T masa_cohete,T distancia_r,T phi)
 {
-    cout<<"velocidad de ascenso"<<velocidad_ascenso<<endl;
-    cout<<"ecuacion"<<(1-pow(3*sin(phi),2) );
-    this->Wr=(G*masa*masa_cohete)/pow(velocidad_ascenso,2)*(1+pow(r_tierra_ecuador/velocidad_ascenso,2)* J2*(1-pow(3*sin(phi),2) ) );
-    this->Wphi=(3*G*masa*masa_cohete/(pow(velocidad_ascenso,2)) )*
-            ( pow(r_tierra_ecuador/velocidad_ascenso,2) )*
+    cout<<"ecuacion"<<(1+pow(r_tierra_ecuador/distancia_r,2)* J2*(1-pow(3*sin(phi),2) ) );
+    this->wr=(G*masa*masa_cohete)/pow(distancia_r,2)*(1+pow(r_tierra_ecuador/distancia_r,2)* J2*(1-pow(3*sin(phi),2) ) );
+    this->wphi=(3*G*masa*masa_cohete/(pow(distancia_r,2)) )*
+            ( pow(r_tierra_ecuador/distancia_r,2) )*
             J2*(sin(phi)*cos(phi))  ;
-    T W = Wr+Wphi;
-    qDebug()<<"probando";
-    qDebug()<<Wr;
-    qDebug()<<Wphi;
+    T W = wr+wphi;
+    cout<<"probando"<<endl;
+    cout<<this->wr<<endl;
+    cout<<this->wphi<<endl;
     return W;
 }
 
@@ -46,10 +46,11 @@ T Earth<T>::get_radiovector()
 }
 
 /////////////ecuacion(7)Incremento de la gravedad
+///multiplico por la pow(10,20) para igualar mi  reduccion
 template<typename T>
 T Earth<T> :: getdGravitybyheight()
 {
-    this->gravitynow=gravityb*pow(r_mediotierra/(r_mediotierra+altitude),2);
+    this->gravitynow=gravityb*pow( (r_mediotierra*pow(10,20))/(r_mediotierra*pow(10,20)+altitude),2);
     return gravitynow;
 }
 
@@ -76,3 +77,14 @@ T Earth<T>::getHeight()
 return height;
 }
 
+template<typename T>
+T Earth<T>::get_wr()
+{
+return wr;
+}
+
+template<typename T>
+T Earth<T>::get_wphi()
+{
+    return wphi;
+}

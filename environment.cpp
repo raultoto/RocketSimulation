@@ -37,18 +37,17 @@ template<typename T>
 void Environment<T>::setvar(T altitud2 )
 {
     tierra.set_var(altitud2);
-    this->h=(tierra.r_mediotierra/(tierra.r_mediotierra+altitud2))*altitud2;
+    this->h=(tierra.r_mediotierra*pow(10,20)/(tierra.r_mediotierra*pow(10,20)+altitud2))*altitud2;
     this->altitudenow=altitud2;
     this->Lm=Lm_pendiente();
     cout<<"Lm"<<Lm;
-    tierra.set_var(altitud2);
     getemperature();
     getspeedsound();
     getdensitybyLm();
     cout<<"altitud"<<altitud2<<endl;
 }
 
-
+//ecuacion (18)
 template<typename T>
 T Environment<T>::getspeedsound()
 {
@@ -77,7 +76,7 @@ T Environment<T>::Lm_pendiente()
         return -2;
     if(altitudenow>=86 && altitudenow<91)
         return 0;
-    if(altitudenow>=91 && altitudenow<1000)
+    if(altitudenow>=91 && altitudenow<10000)
         return 12;
     return -1000;
 }
@@ -100,7 +99,7 @@ T Environment<T>::getdensitybyLm()
         return airDensityb*pow(1/e,tierra.gravityb*(h-hb)/R*temperatureb);
     return -1000;
 }
-
+//ecuacion (16 y 14)
 template<typename T>
 T Environment<T>::getpresionbyLm()
 {
@@ -111,6 +110,7 @@ T Environment<T>::getpresionbyLm()
     return -1000;
 }
 
+//ecuacion(17 y 15)
 template <typename T>
 T Environment<T>::getAirDensity()
 {
@@ -123,4 +123,10 @@ template <typename T>
 T Environment<T>::getLenght()
 {
     return lenghtb;
+}
+
+template<typename T>
+T Environment<T>::get_height()
+{
+    return h;
 }

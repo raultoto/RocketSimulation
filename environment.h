@@ -14,7 +14,7 @@ public:
     Environment();
     Environment(T altitude_now );
 
-    T getAirDensity();   
+    T getAirDensity();
     T getLenght();
     T get_Altitudg();
     //T diferencial_altitud();
@@ -25,6 +25,7 @@ public:
     void  getemperature();
     T getspeedsound() ;
     void setvar(T altitud);
+    T get_height();
 private:
     ///////////inicializar variables
     T pressureb=14.5;

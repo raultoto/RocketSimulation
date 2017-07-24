@@ -31,12 +31,21 @@ public:
     Rocket(T &altitud,T & vb, T & latitud,T & longitud,T & dt);
     T drag();//arrastre
     T lift();//sustentacion
-    T gravity();
+    T push();//empuje
     void position();
     void velocity();
-    void acceleration();
+    void aceleration();
+    T dif_phi();
+    T dif_lamnda();
+    T dif_theta();
+    T dif_azimut();
+    T dif_altitud();
+    /////internament calcula la velocidad lo descompone
+    /// y lo pone en el vector velocidad
+    vectores<T> dif_velocity();
+
     void update_var();//variables necesarias para el movimiento
-    void setlatitud_longitud(T & latitud ,T & longitud, T & altitud);
+    void setlatitud_longitud(T & latitud ,T & longitud, T & altitud,T v1);
     void get_cdycl();
     T get_velocidad_ascenso();
     ///gets
@@ -44,9 +53,11 @@ public:
     T getheight();
     T getareaall();
     T getarea_nozzle();
-    T push();//empuje
-    T dif_velocity();
-    void movimiento();
+    T get_phi();
+    T get_lamnda();
+    T get_tall();
+    T get_doughtxetapa();
+    T dif_dought();
     vectores<T> vector_velocity;
     vectores<T> posicion;
     T a;
@@ -54,6 +65,8 @@ public:
     Environment<T> ambiente ;// en vez de fuerza atmosfera
     T dv;
     T v;
+    double theta;
+     double azimut;
 private:
     T latitude;
     T longitude;
@@ -61,11 +74,13 @@ private:
     vectores<T> difvector_velocity;
     T D; // arrastre
     T w;//velocidad angular
-    T num_push ;
+    T Push ;//empuje
+    T L;//fuerza de sustentacion
     T latitudeb;
-
+    T wr;
+    T wphi;
     Earth<T> mytierra;//T a,T pressureb1,T temperaturab1,T  hb1)
-
+    T doughtxetapa;
     double q;
     T Cl;//coeficiente de sustentacion
     T Cd;//coeficientes de arrastre
@@ -74,26 +89,28 @@ private:
     T velocityout;//es la velocidad que los gases estan saliendo
     T velocitysoun;
     double dt;
-    double azimut=0;
-    double theta=20;
-    double phi=37;//angulo delatitud
-    double lamnda=121 ;//angulo de longitud
+
+
+    double phi;//angulo delatitud
+    double lamnda;//angulo de longitud
 
 ////////////////datos iniciales del cohete//////////////////
     double vb;
-    double dough=121;
-    double doughcarga=343;
+    double dough_expel=1.67;
+    double velocity_expel=1.2;
+    double tall;
+    double dough;
+    double dough_tobera=20;
     double areaall=5454;
     double area_nozzle=223;//area de la tobera
-    double diameter=245;//diametrocohete
-    double tip_length=12; //longitu de punta=cono(modelismo)
+    double diameter=2;//diametrocohete
+    double tip_length=4; //longitu de punta=cono(modelismo)
 
-    double anguloataque=0;
+    double anguloataque=0;//definido por el libro como constante
 
     double A=(diameter*diameter*PI)/4;//reference_surface
 
-    vectores<T> velocidadangulo;
-    T r=1;
+    T r;
 };
 
 
