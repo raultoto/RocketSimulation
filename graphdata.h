@@ -23,7 +23,7 @@ class GraphData:public QGraphicsView
 public:
     GraphData(QWidget *parent=0);
 
-    void readFiles();//lee un archivo
+    void readFiles(string);//lee un archivo
     double stringToInt(string);
     void convertStringToNumber(string);
     //public functions
