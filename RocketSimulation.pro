@@ -43,7 +43,7 @@ HEADERS  += \
     graphdata.h \
     datos_iniciales.h
 
-FORMS    += mainwindow.ui
+FORMS    +=
 
 RESOURCES += \
     res.qrc

@@ -58,7 +58,6 @@ GraphData::GraphData(QWidget *parent)
     connect(graphButtom2,SIGNAL(clicked()),this,SLOT(velocityWithPressure()));
     scene1->addItem(trajectory3);
     scene1->addItem(graphButtom2);
-    readFiles();
 
 
 
@@ -69,10 +68,10 @@ GraphData::GraphData(QWidget *parent)
 
 }
 
-void GraphData::readFiles()
+void GraphData::readFiles(string name)
 {
     ifstream inputFile;
-    inputFile.open("prueba.csv");
+    inputFile.open(name);//"prueba.csv"
     string data;
     if (inputFile.is_open())
     {
@@ -117,6 +116,7 @@ void GraphData::convertStringToNumber(string number)
 
 void GraphData::graphHeightWithTime()
 {
+    readFiles("prueba.csv");
     int cont=0;
     while (cont<vec1.size()) {
         RocketTrajectory *trajectory3 = new RocketTrajectory("*",1);
@@ -124,10 +124,13 @@ void GraphData::graphHeightWithTime()
         trajectory3->setPos(400+vec1[cont],400+vec2[cont]);
         cont++;
     }
+    this->vec1.clear();
+    this->vec2.clear();
 }
 
 void GraphData::graphVelocityWithTime()
 {
+    readFiles("prueba.csv");
     int cont=0;
     while (cont<100) {
         RocketTrajectory *trajectory3 = new RocketTrajectory("*",2);
@@ -135,11 +138,14 @@ void GraphData::graphVelocityWithTime()
         trajectory3->setPos(400+cont,400+cont);
         cont++;
     }
+    this->vec1.clear();
+    this->vec2.clear();
 
 }
 
 void GraphData::velocityWithPressure()
 {
+    readFiles("prueba.csv");
     int cont=0;
     while (cont<100) {
         RocketTrajectory *trajectory3 = new RocketTrajectory("*",3);
@@ -147,5 +153,7 @@ void GraphData::velocityWithPressure()
         trajectory3->setPos(400,400-cont);
         cont++;
     }
+    this->vec1.clear();
+    this->vec2.clear();
 
 }
